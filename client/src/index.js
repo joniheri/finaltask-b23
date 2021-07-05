@@ -1,12 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./css/index.css";
 import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 
+// import bootstrap
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// import component
+import CheckLogin from "./components/CheckLogin";
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <CheckLogin />
   </React.StrictMode>,
   document.getElementById("root")
 );
