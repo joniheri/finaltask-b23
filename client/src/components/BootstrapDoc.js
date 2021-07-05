@@ -379,6 +379,7 @@ export default function BootstrapDoc() {
               </tr>
             </tbody>
           </Table>
+          <h1>End</h1>
         </div>
       </Container>
       {/* End Table */}
