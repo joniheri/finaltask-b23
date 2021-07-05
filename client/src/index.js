@@ -8,12 +8,14 @@ import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // import component
+import BootstrapDoc from "./components/BootstrapDoc";
 import CheckLogin from "./components/CheckLogin";
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <CheckLogin />
+    <BootstrapDoc />
+    {/* <CheckLogin /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );
