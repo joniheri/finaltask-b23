@@ -14,8 +14,8 @@ import CheckLogin from "./components/CheckLogin";
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
-    <BootstrapDoc />
-    {/* <CheckLogin /> */}
+    {/* <BootstrapDoc /> */}
+    <CheckLogin />
   </React.StrictMode>,
   document.getElementById("root")
 );
