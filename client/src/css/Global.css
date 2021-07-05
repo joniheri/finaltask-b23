@@ -1,0 +1,21 @@
+.scrollY {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.distance-5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.borderBottom {
+  border-bottom: 1px solid #000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 575px) {
+  /* .scrollY {
+    border-right: none;
+  } */
+}
