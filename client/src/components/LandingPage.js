@@ -7,6 +7,13 @@ import { Row, Col, Button, Image, Card } from "react-bootstrap";
 import ModalLogin from "./modal/ModalLogin";
 import ModalRegister from "./modal/ModalRegister";
 
+// import img
+import btnLogin from "../img/LoginButton.png";
+import btnRegister from "../img/ButtonRegister.png";
+import bgLandingPage from "../img/Rectangle1.png";
+import DUMBSOUND from "../img/DUMBSOUND.png";
+import LogoShapes from "../img/LogoShapes.png";
+
 export default function LandingPage({ stateLogin, setStateLogin }) {
   const [loginShow, setLoginShow] = useState(false);
   const [registerShow, setRegisterShow] = useState(false);
@@ -23,44 +30,31 @@ export default function LandingPage({ stateLogin, setStateLogin }) {
   // console.log("Statsu Lgon LandingPage: ", stateLogin);
 
   return (
-    <div style={{ overflowX: "hidden" }}>
+    <div className="landingPage" style={{ overflowX: "hidden" }}>
       <Row
         style={{
-          marginTop: "50px",
+          marginTop: "30px",
           marginBottom: "20px",
           marginLeft: "30px",
-          marginRight: "30px",
+          marginRight: "40px",
         }}
       >
         {/* left */}
         <Col sm={6}>
-          <Row>
-            <h1>Left Columb</h1>
-          </Row>
-          <Row styl>
-            <Col sm={6} style={{ padding: "0" }}>
-              <Button className="btn-login" onClick={onSwitchLogin}>
-                Login
-              </Button>
-              <ModalLogin
-                loginShow={loginShow}
-                setLoginShow={setLoginShow}
-                setRegisterShow={setRegisterShow}
-                stateLogin={stateLogin}
-                setStateLogin={setStateLogin}
-              />
-            </Col>
-            <Col sm={6} style={{ padding: "0" }}>
-              <Button className="btn-register" onClick={onSwitchRegister}>
-                Register
-              </Button>
-              <ModalRegister
-                registerShow={registerShow}
-                setRegisterShow={setRegisterShow}
-                setLoginShow={setLoginShow}
-              />
-            </Col>
-          </Row>
+          <div
+            style={{
+              height: "16px",
+              width: "auto",
+              cursor: "pointer",
+              marginRight: "10px",
+            }}
+          >
+            <Image
+              src={LogoShapes}
+              style={{ marginRight: "8px", height: "17px" }}
+            />
+            <Image src={DUMBSOUND} />
+          </div>
         </Col>
         {/* End left */}
 
@@ -69,9 +63,47 @@ export default function LandingPage({ stateLogin, setStateLogin }) {
           <Row
             style={{
               marginLeft: "30px",
+              right: "0",
+              position: "absolute",
             }}
           >
-            <h1>Right Columb</h1>
+            {/* btnLogin */}
+            <Image
+              src={btnLogin}
+              onClick={onSwitchLogin}
+              style={{
+                height: "30px",
+                width: "auto",
+                cursor: "pointer",
+                marginRight: "10px",
+              }}
+            />
+            <ModalLogin
+              loginShow={loginShow}
+              setLoginShow={setLoginShow}
+              setRegisterShow={setRegisterShow}
+              stateLogin={stateLogin}
+              setStateLogin={setStateLogin}
+            />
+            {/* EndBtnLogin */}
+
+            {/* BtnRegister */}
+            <Image
+              src={btnRegister}
+              onClick={onSwitchRegister}
+              style={{
+                height: "30px",
+                width: "auto",
+                cursor: "pointer",
+                marginRight: "10px",
+              }}
+            />
+            <ModalRegister
+              registerShow={registerShow}
+              setRegisterShow={setRegisterShow}
+              setLoginShow={setLoginShow}
+            />
+            {/* EndBntRegister */}
           </Row>
         </Col>
         {/* End Righ */}
