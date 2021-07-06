@@ -18,7 +18,7 @@ export default function Transaction() {
   return (
     <Container>
       <h1 style={{ color: "#fff", marginTop: "40px", marginBottom: "40px" }}>
-        This is Incoming Transaction Page
+        Incoming Transaction
       </h1>
       <Table striped bordered hover variant="dark">
         <thead style={{ color: "#EE4622" }}>
@@ -47,7 +47,7 @@ export default function Transaction() {
                 id="dropdown-menu-align-right"
               >
                 <Dropdown.Toggle
-                  style={{ background: "#161616", borderColor: "none" }}
+                  style={{ background: "#43494e", borderColor: "#43494e" }}
                 >
                   <Image src={Polygon2} style={{ cursor: "pointer" }} />
                 </Dropdown.Toggle>
@@ -68,7 +68,23 @@ export default function Transaction() {
             <td>Otto</td>
             <td>Otto</td>
             <td style={{ textAlign: "center" }}>
-              <Image src={Polygon2} style={{ cursor: "pointer" }} />
+              <Dropdown
+                align="end"
+                title="Dropdown right"
+                id="dropdown-menu-align-right"
+              >
+                <Dropdown.Toggle
+                  style={{ background: "#43494e", borderColor: "#43494e" }}
+                >
+                  <Image src={Polygon2} style={{ cursor: "pointer" }} />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#">Action</Dropdown.Item>
+                  <Dropdown.Item href="#">Another action</Dropdown.Item>
+                  <Dropdown.Item href="#">Something else</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </td>
           </tr>
           <tr>
@@ -79,7 +95,23 @@ export default function Transaction() {
             <td>Otto</td>
             <td>Larry the Bird</td>
             <td style={{ textAlign: "center" }}>
-              <Image src={Polygon2} style={{ cursor: "pointer" }} />
+              <Dropdown
+                align="end"
+                title="Dropdown right"
+                id="dropdown-menu-align-right"
+              >
+                <Dropdown.Toggle
+                  style={{ background: "#43494e", borderColor: "#43494e" }}
+                >
+                  <Image src={Polygon2} style={{ cursor: "pointer" }} />
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#">Action</Dropdown.Item>
+                  <Dropdown.Item href="#">Another action</Dropdown.Item>
+                  <Dropdown.Item href="#">Something else</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </td>
           </tr>
         </tbody>

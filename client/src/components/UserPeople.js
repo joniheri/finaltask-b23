@@ -1,5 +1,14 @@
 import React, { useState, useContext } from "react";
 
+// import react-router-dom
+import {
+  BrowserRouter as Router,
+  Switch,
+  Link,
+  Route,
+  Redirect,
+} from "react-router-dom";
+
 // import component bootstrap
 import {
   Row,
@@ -15,10 +24,10 @@ import {
 import ModalLogin from "./modal/ModalLogin";
 import ModalRegister from "./modal/ModalRegister";
 
+// import page
+import Pay from "../pages/Pay";
+
 // import img
-import btnLogin from "../img/LoginButton.png";
-import btnRegister from "../img/ButtonRegister.png";
-import bgLandingPage from "../img/Rectangle1.png";
 import DUMBSOUND from "../img/DUMBSOUND.png";
 import LogoShapes from "../img/LogoShapes.png";
 import Rectangle4 from "../img/Rectangle4.png";
@@ -33,6 +42,11 @@ import Rectangle12 from "../img/Rectangle12.png";
 import Rectangle13 from "../img/Rectangle13.png";
 import Rectangle14 from "../img/Rectangle14.png";
 import Rectangle15 from "../img/Rectangle15.png";
+import Ellipse1 from "../img/Ellipse1.png";
+import Vector1 from "../img/Vector1.png";
+import Vector2 from "../img/Vector2.png";
+import Vector3 from "../img/Vector3.png";
+import VectorPay from "../img/VectorPay.png";
 
 export default function UserPeople({ stateLogin, setStateLogin }) {
   const [loginShow, setLoginShow] = useState(false);
@@ -51,7 +65,6 @@ export default function UserPeople({ stateLogin, setStateLogin }) {
 
   return (
     <div>
-      <h1>THIS IS USERPEOPLE PAGE</h1>
       <div className="landingPage">
         <Row
           style={{
@@ -98,41 +111,52 @@ export default function UserPeople({ stateLogin, setStateLogin }) {
               }}
             >
               {/* btnLogin */}
-              <Image
-                src={btnLogin}
-                onClick={onSwitchLogin}
-                style={{
-                  height: "30px",
-                  width: "auto",
-                  cursor: "pointer",
-                  marginRight: "10px",
-                }}
-              />
-              <ModalLogin
-                loginShow={loginShow}
-                setLoginShow={setLoginShow}
-                setRegisterShow={setRegisterShow}
-                stateLogin={stateLogin}
-                setStateLogin={setStateLogin}
-              />
-              {/* EndBtnLogin */}
-
-              {/* BtnRegister */}
-              <Image
-                src={btnRegister}
-                onClick={onSwitchRegister}
-                style={{
-                  height: "30px",
-                  width: "auto",
-                  cursor: "pointer",
-                  marginRight: "10px",
-                }}
-              />
-              <ModalRegister
-                registerShow={registerShow}
-                setRegisterShow={setRegisterShow}
-                setLoginShow={setLoginShow}
-              />
+              <div className="dropdown" style={{ float: "right" }}>
+                <Image
+                  src={Ellipse1}
+                  style={{
+                    width: "40PX",
+                    height: "auto",
+                    cursor: "pointer",
+                    marginTop: "2px",
+                  }}
+                />
+                <div className="dropdown-content">
+                  <Link
+                    to="/pay"
+                    style={{
+                      textDecoration: "none",
+                      padding: "0",
+                      margin: "0",
+                    }}
+                  >
+                    <a
+                      href="#"
+                      style={{
+                        borderTopLeftRadius: "3px",
+                        borderTopRightRadius: "3px",
+                      }}
+                    >
+                      <Image src={VectorPay} style={{ marginRight: "20px" }} />
+                      Pay
+                    </a>
+                  </Link>
+                  <div className="borderBottom-2"></div>
+                  <a
+                    href="#"
+                    style={{
+                      borderBottomLeftRadius: "3px",
+                      borderBottomRightRadius: "3px",
+                    }}
+                    onClick={() => {
+                      setStateLogin(false);
+                    }}
+                  >
+                    <Image src={Vector3} style={{ marginRight: "20px" }} />
+                    Logout
+                  </a>
+                </div>
+              </div>
               {/* EndBntRegister */}
             </Row>
           </Col>

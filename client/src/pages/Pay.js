@@ -3,12 +3,14 @@ import React from "react";
 // import component bootstrap
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 
-export default function AddArtis() {
+export default function Pay() {
   return (
     <Container>
-      <h1 style={{ color: "#fff", marginTop: "40px", marginBottom: "40px" }}>
-        Add Artis
-      </h1>
+      <center>
+        <h1 style={{ color: "#fff", marginTop: "40px", marginBottom: "40px" }}>
+          Premium
+        </h1>
+      </center>
       <Form>
         <Form.Control
           value=""

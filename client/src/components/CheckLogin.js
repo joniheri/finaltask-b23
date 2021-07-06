@@ -19,7 +19,7 @@ export default function CheckLogin() {
     <div>
       <Router>
         {stateLogin === true ? (
-          <UserAdmin stateLogin={stateLogin} setStateLogin={setStateLogin} />
+          <UserPeople stateLogin={stateLogin} setStateLogin={setStateLogin} />
         ) : (
           <LandingPage stateLogin={stateLogin} setStateLogin={setStateLogin} />
         )}
