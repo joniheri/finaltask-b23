@@ -23,51 +23,75 @@ export default function ModalRegister({
       >
         <Modal.Header
           className="bg-modal"
-          style={{ border: "0", color: "#000" }}
+          style={{ border: "0", color: "#fff", background: "#1F1F1F" }}
         >
           <Modal.Title id="example-modal-sizes-title-sm">Register</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="bg-modal">
+        <Modal.Body className="bg-modal" style={{ background: "#1F1F1F" }}>
           {message && <Alert variant="danger">{message}</Alert>}
           <Form>
-            <Form.Control
-              name="email"
-              type="email"
-              placeholder="Email"
-              required
-              style={{ margin: "0 0 15px 0" }}
-              className="input1"
-            />
-            <Form.Control
-              name="fullname"
-              type="text"
-              placeholder="Name"
-              required
-              style={{ margin: "0 0 15px 0" }}
-              className="input1"
-            />
-            <Form.Control
-              name="username"
-              type="text"
-              placeholder="Username"
-              required
-              style={{ margin: "0 0 15px 0" }}
-              className="input1"
-            />
-            <Form.Control
-              name="password"
-              type="password"
-              placeholder="Password"
-              required
-              style={{ margin: "0 0 15px 0" }}
-              className="input1"
-            />
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Control
+                name="email"
+                type="email"
+                placeholder="Email"
+                required
+                className="input1"
+              />
+            </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Control
+                name="password"
+                type="password"
+                placeholder="Password"
+                required
+                className="input1"
+              />
+            </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Control
+                name="fullname"
+                type="text"
+                placeholder="Full Name"
+                required
+                className="input1"
+              />
+            </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Control
+                name="gender"
+                type="text"
+                placeholder="Gender"
+                required
+                className="input1"
+              />
+            </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Control
+                name="phone"
+                type="text"
+                placeholder="Phone"
+                required
+                className="input1"
+              />
+            </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Control
+                name="address"
+                type="text"
+                placeholder="Address"
+                required
+                className="input1"
+              />
+            </Form.Group>
             <Button
               type="submit"
               className="btn-register2"
               style={{
                 width: "100%",
                 margin: "20px 0 0 0",
+                background: "#EE4622",
+                borderColor: "#EE4622",
               }}
             >
               Register

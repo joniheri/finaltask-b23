@@ -27,11 +27,11 @@ export default function ModalLogin({
       >
         <Modal.Header
           className="bg-modal"
-          style={{ border: "0", color: "#000" }}
+          style={{ border: "0", color: "#fff", background: "#1F1F1F" }}
         >
           <Modal.Title id="example-modal-sizes-title-sm">Login</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="bg-modal">
+        <Modal.Body className="bg-modal" style={{ background: "#1F1F1F" }}>
           <Form>
             <Form.Control
               value=""
@@ -57,6 +57,8 @@ export default function ModalLogin({
               style={{
                 width: "100%",
                 margin: "20px 0 0 0",
+                background: "#EE4622",
+                borderColor: "#EE4622",
               }}
               onClick={() => {
                 setStateLogin(true);
