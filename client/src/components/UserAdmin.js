@@ -1,5 +1,14 @@
 import React, { useState, useContext } from "react";
 
+// import react-router-dom
+import {
+  BrowserRouter as Router,
+  Switch,
+  Link,
+  Route,
+  Redirect,
+} from "react-router-dom";
+
 // import component bootstrap
 import {
   Row,
@@ -12,29 +21,22 @@ import {
 } from "react-bootstrap";
 
 // import component
-import ModalLogin from "./modal/ModalLogin";
-import ModalRegister from "./modal/ModalRegister";
+
+// import page
+import Dashboard from "../pages/Dashboard";
+import AddMusic from "../pages/AddMusic";
+import AddArtis from "../pages/AddArtis";
+import Transaction from "../pages/Transaction";
 
 // import img
-import btnLogin from "../img/LoginButton.png";
-import btnRegister from "../img/ButtonRegister.png";
-import bgLandingPage from "../img/Rectangle1.png";
-import DUMBSOUND from "../img/DUMBSOUND.png";
 import LogoShapes from "../img/LogoShapes.png";
-import Rectangle4 from "../img/Rectangle4.png";
-import Rectangle5 from "../img/Rectangle5.png";
-import Rectangle6 from "../img/Rectangle6.png";
-import Rectangle7 from "../img/Rectangle7.png";
-import Rectangle8 from "../img/Rectangle8.png";
-import Rectangle9 from "../img/Rectangle9.png";
-import Rectangle10 from "../img/Rectangle10.png";
-import Rectangle11 from "../img/Rectangle11.png";
-import Rectangle12 from "../img/Rectangle12.png";
-import Rectangle13 from "../img/Rectangle13.png";
-import Rectangle14 from "../img/Rectangle14.png";
-import Rectangle15 from "../img/Rectangle15.png";
+import Ellipse2 from "../img/Ellipse2.png";
+import DUMBSOUND from "../img/DUMBSOUND.png";
+import Vector1 from "../img/Vector1.png";
+import Vector2 from "../img/Vector2.png";
+import Vector3 from "../img/Vector3.png";
 
-export default function LandingPage({ stateLogin, setStateLogin }) {
+export default function UserAdmin({ stateLogin, setStateLogin }) {
   const [loginShow, setLoginShow] = useState(false);
   const [registerShow, setRegisterShow] = useState(false);
 
@@ -50,19 +52,18 @@ export default function LandingPage({ stateLogin, setStateLogin }) {
   // console.log("Statsu Lgon LandingPage: ", stateLogin);
 
   return (
-    <div>
-      <h1>THIS IS USERPEOPLE PAGE</h1>
-      <div className="landingPage">
+    <div style={{ overflow: "hidden" }}>
+      <div>
         <Row
+          className="box-shadow-1"
           style={{
-            paddingTop: "30px",
-            marginBottom: "20px",
-            marginLeft: "30px",
-            marginRight: "40px",
+            background: "#1F1F1F",
+            paddingTop: "15px",
+            paddingBottom: "40px",
           }}
         >
           {/* left */}
-          <Col sm={6}>
+          <Col sm={5} style={{ marginLeft: "20px", marginRight: "30px" }}>
             <div
               style={{
                 height: "16px",
@@ -70,20 +71,25 @@ export default function LandingPage({ stateLogin, setStateLogin }) {
                 marginRight: "10px",
               }}
             >
-              <Image
-                src={LogoShapes}
-                style={{
-                  marginRight: "8px",
-                  height: "17px",
-                  cursor: "pointer",
-                }}
-              />
-              <Image
-                src={DUMBSOUND}
-                style={{
-                  cursor: "pointer",
-                }}
-              />
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <Image
+                  src={LogoShapes}
+                  style={{
+                    marginLeft: "20px",
+                    marginTop: "15px",
+                    marginRight: "8px",
+                    height: "17px",
+                    cursor: "pointer",
+                  }}
+                />
+                <Image
+                  src={DUMBSOUND}
+                  style={{
+                    marginTop: "15px",
+                    cursor: "pointer",
+                  }}
+                />
+              </Link>
             </div>
           </Col>
           {/* End left */}
@@ -97,208 +103,99 @@ export default function LandingPage({ stateLogin, setStateLogin }) {
                 position: "absolute",
               }}
             >
-              {/* btnLogin */}
-              <Image
-                src={btnLogin}
-                onClick={onSwitchLogin}
-                style={{
-                  height: "30px",
-                  width: "auto",
-                  cursor: "pointer",
-                  marginRight: "10px",
-                }}
-              />
-              <ModalLogin
-                loginShow={loginShow}
-                setLoginShow={setLoginShow}
-                setRegisterShow={setRegisterShow}
-                stateLogin={stateLogin}
-                setStateLogin={setStateLogin}
-              />
-              {/* EndBtnLogin */}
-
-              {/* BtnRegister */}
-              <Image
-                src={btnRegister}
-                onClick={onSwitchRegister}
-                style={{
-                  height: "30px",
-                  width: "auto",
-                  cursor: "pointer",
-                  marginRight: "10px",
-                }}
-              />
-              <ModalRegister
-                registerShow={registerShow}
-                setRegisterShow={setRegisterShow}
-                setLoginShow={setLoginShow}
-              />
-              {/* EndBntRegister */}
+              <div className="dropdown" style={{ float: "right" }}>
+                <Image
+                  src={Ellipse2}
+                  onClick={onSwitchRegister}
+                  style={{
+                    width: "40PX",
+                    height: "auto",
+                    cursor: "pointer",
+                    marginTop: "2px",
+                  }}
+                />
+                <div className="dropdown-content">
+                  <Link
+                    to="/transaction"
+                    style={{
+                      textDecoration: "none",
+                      padding: "0",
+                      margin: "0",
+                    }}
+                  >
+                    <a
+                      href="#"
+                      style={{
+                        borderTopLeftRadius: "3px",
+                        borderTopRightRadius: "3px",
+                      }}
+                    >
+                      <Image src={Vector1} style={{ marginRight: "20px" }} />
+                      Transaction
+                    </a>
+                  </Link>
+                  <Link
+                    to="/addmusic"
+                    style={{
+                      textDecoration: "none",
+                      padding: "0",
+                      margin: "0",
+                    }}
+                  >
+                    <a
+                      href="#"
+                      style={{
+                        borderTopLeftRadius: "3px",
+                        borderTopRightRadius: "3px",
+                      }}
+                    >
+                      <Image src={Vector1} style={{ marginRight: "20px" }} />
+                      Add Music
+                    </a>
+                  </Link>
+                  <Link
+                    to="/addartis"
+                    style={{
+                      textDecoration: "none",
+                      padding: "0",
+                      margin: "0",
+                    }}
+                  >
+                    <a href="#">
+                      <Image src={Vector2} style={{ marginRight: "20px" }} />{" "}
+                      Add Artis
+                    </a>
+                  </Link>
+                  <div className="borderBottom-2"></div>
+                  <a
+                    href="#"
+                    style={{
+                      borderBottomLeftRadius: "3px",
+                      borderBottomRightRadius: "3px",
+                    }}
+                    onClick={() => {
+                      setStateLogin(false);
+                    }}
+                  >
+                    <Image src={Vector3} style={{ marginRight: "20px" }} />
+                    Logout
+                  </a>
+                </div>
+              </div>
             </Row>
           </Col>
           {/* End Righ */}
-          <Col sm={12}>
-            <p
-              style={{
-                color: "#fff",
-                fontSize: "40px",
-                textAlign: "center",
-                marginTop: "130px",
-              }}
-            >
-              Connect on DumbSound
-            </p>
-            <center>
-              <p
-                style={{
-                  color: "#fff",
-                  fontSize: "18px",
-                  textAlign: "center",
-                  width: "680px",
-                }}
-              >
-                Discovery, Stream, and share a constantly expanding mix of music
-                from emerging and major artists around the world
-              </p>
-            </center>
-          </Col>
         </Row>
       </div>
-      <div>
-        <Row
-          style={{
-            marginLeft: "60px",
-            marginRight: "60px",
-            marginBottom: "30px",
-          }}
-        >
-          <Col sm={12}>
-            <p
-              style={{
-                textAlign: "center",
-                color: "#EE4622",
-                fontSize: "24px",
-                paddingTop: "30px",
-                marginBottom: "40px",
-              }}
-            >
-              Dengarkan Dan Rasakan
-            </p>
-          </Col>
-          <Col sm={12}>
-            <Row>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle4} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle5} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle6} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle7} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle8} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle9} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle10} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle11} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle12} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle13} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle14} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle15} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </div>
+
+      {/* Content */}
+      <Switch>
+        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/addmusic" component={AddMusic} />
+        <Route exact path="/addartis" component={AddArtis} />
+        <Route exact path="/transaction" component={Transaction} />
+      </Switch>
+      {/* End Content */}
     </div>
   );
 }

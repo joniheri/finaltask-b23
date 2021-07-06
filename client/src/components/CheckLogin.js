@@ -8,6 +8,8 @@ import { Button } from "react-bootstrap";
 
 // import Components
 import MainAdmin from "./MainAdmin";
+import UserPeople from "./UserPeople";
+import UserAdmin from "./UserAdmin";
 import LandingPage from "./LandingPage";
 
 export default function CheckLogin() {
@@ -17,7 +19,7 @@ export default function CheckLogin() {
     <div>
       <Router>
         {stateLogin === true ? (
-          <MainAdmin stateLogin={stateLogin} setStateLogin={setStateLogin} />
+          <UserAdmin stateLogin={stateLogin} setStateLogin={setStateLogin} />
         ) : (
           <LandingPage stateLogin={stateLogin} setStateLogin={setStateLogin} />
         )}
