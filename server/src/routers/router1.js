@@ -20,15 +20,8 @@ const router = express.Router();
 // end testFakeData
 
 // auth
-const {
-  login,
-  loginDua,
-  checkAuth,
-  authMiddle,
-} = require("../controllers/Auth"); //--Router auth
+const { checkAuth, authMiddle } = require("../controllers/Auth"); //--Router auth
 
-router.get("/login", login);
-router.post("/logindua", loginDua);
 // router.post("/check-auth", authMiddle, checkAuth);
 // end auth
 
@@ -56,6 +49,8 @@ const {
   updateUser,
   deleteUser,
   register,
+  login,
+  loginDua,
 } = require("../controllers/tbUser"); //--Router user
 
 router.get("/users", getUsers);
@@ -64,6 +59,8 @@ router.post("/adduser", addUser);
 router.patch("/updateuser/:id", updateUser);
 router.delete("/deleteuser/:id", deleteUser);
 router.post("/registeruser/", register);
+router.get("/login", login);
+router.post("/logindua", loginDua);
 // end tbUser
 
 module.exports = router;

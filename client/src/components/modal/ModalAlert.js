@@ -11,7 +11,7 @@ export default function ModalAlert({ messageShow, setMessageShow }) {
         show={messageShow}
         onHide={() => setMessageShow(false)}
         aria-labelledby="example-modal-sizes-title-sm"
-        style={{ borderColor: "#1F1F1F  " }}
+        style={{ borderColor: "#1F1F1F" }}
         centered
         style={{ color: "#155724" }}
       >

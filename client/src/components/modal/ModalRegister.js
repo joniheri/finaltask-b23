@@ -12,7 +12,7 @@ export default function ModalRegister({
   setLoginShow,
   setRegisterShow,
 }) {
-  const [message, setMessage] = useState("");
+  const [messageShowFailed, setMessageShowFailed] = useState("");
   const [messageShow, setMessageShow] = useState(false);
 
   const [form, setForm] = useState({
@@ -54,11 +54,11 @@ export default function ModalRegister({
       console.log("DataSaved: ", respons);
 
       if (respons.data.status === "Validate Failed") {
-        setMessage(respons.data.message);
+        setMessageShowFailed(respons.data.message);
       } else if (respons.data.status === "Failed") {
-        setMessage(respons.data.message);
+        setMessageShowFailed(respons.data.message);
       } else {
-        setMessage("");
+        setMessageShowFailed("");
         setForm({
           fullname: "",
           email: "",
@@ -82,7 +82,7 @@ export default function ModalRegister({
         show={registerShow}
         onHide={() => setRegisterShow(false)}
         aria-labelledby="example-modal-sizes-title-sm"
-        style={{ borderColor: "#1F1F1F  " }}
+        style={{ borderColor: "#1F1F1F" }}
         centered
       >
         <Modal.Header
@@ -92,7 +92,9 @@ export default function ModalRegister({
           <Modal.Title id="example-modal-sizes-title-sm">Register</Modal.Title>
         </Modal.Header>
         <Modal.Body className="bg-modal" style={{ background: "#1F1F1F" }}>
-          {message && <Alert variant="danger">{message}</Alert>}
+          {messageShowFailed && (
+            <Alert variant="danger">{messageShowFailed}</Alert>
+          )}
           <Form onSubmit={handleOnSubmit}>
             <Form.Group controlId="formFile" className="mb-3">
               <Form.Control

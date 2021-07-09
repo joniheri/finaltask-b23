@@ -7,7 +7,7 @@ import { API } from "../../config/Api";
 
 import ModalAlert from "./ModalAlert";
 
-export default function ModalRegister({
+export default function ModalRegister2({
   registerShow,
   setLoginShow,
   setRegisterShow,
