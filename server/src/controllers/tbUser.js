@@ -201,10 +201,12 @@ exports.register = async (req, res) => {
     console.log(data);
 
     const schema = joi.object({
-      email: joi.string().email().min(8).required(),
       fullname: joi.string().min(4).required(),
-      username: joi.string().min(6).required(),
+      email: joi.string().email().min(8).required(),
       password: joi.string().min(6).required(),
+      gender: joi.string().min(4).required(),
+      phone: joi.string().min(10).required(),
+      address: joi.string().min(6).required(),
     });
 
     const { error } = schema.validate(data);

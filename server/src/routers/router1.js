@@ -4,7 +4,7 @@ const router = express.Router();
 
 // const { authMiddle } = require("../middleware/authMiddle");
 
-//import testFakeData
+// testFakeData
 // const {
 //   getTestDatas,
 //   getTestData,
@@ -20,14 +20,19 @@ const router = express.Router();
 // end testFakeData
 
 // auth
-// const { login, loginDua, checkAuth } = require("../controllers/auth"); //--Router auth
+const {
+  login,
+  loginDua,
+  checkAuth,
+  authMiddle,
+} = require("../controllers/Auth"); //--Router auth
 
-// router.get("/login", login);
-// router.post("/logindua", loginDua);
+router.get("/login", login);
+router.post("/logindua", loginDua);
 // router.post("/check-auth", authMiddle, checkAuth);
 // end auth
 
-//import tb_test
+//tb_test
 // const {
 //   tests,
 //   detailTest,
@@ -41,7 +46,7 @@ const router = express.Router();
 // router.post("/addtest", addTest);
 // router.patch("/updatetest/:id", updateTest);
 // router.delete("/deletetest/:id", deleteTest);
-// end make tb_test
+// end tb_test
 
 //tbUser
 const {

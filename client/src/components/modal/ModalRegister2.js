@@ -24,7 +24,7 @@ export default function ModalRegister({
     address: "",
   });
 
-  const { fullname, email, password, gender, phone, address } = form;
+  const { email, fullname, username, password } = form;
 
   const handleOnChange = (e) => {
     setForm({
@@ -34,46 +34,6 @@ export default function ModalRegister({
   };
 
   console.log(form);
-
-  const handleOnSubmit = async (e) => {
-    try {
-      e.preventDefault();
-
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-
-      const body = JSON.stringify({ ...form });
-
-      // console.log("PrintBody: ", body);
-
-      const respons = await API.post("/registeruser", body, config); //-->this is sintact to inset to database
-
-      console.log("DataSaved: ", respons);
-
-      if (respons.data.status === "Validate Failed") {
-        setMessage(respons.data.message);
-      } else if (respons.data.status === "Failed") {
-        setMessage(respons.data.message);
-      } else {
-        setMessage("");
-        setForm({
-          fullname: "",
-          email: "",
-          password: "",
-          gender: "",
-          phone: "",
-          address: "",
-        });
-        setRegisterShow(false);
-        setMessageShow(true);
-      }
-    } catch (error) {
-      console.log("ErrorTryCath", error);
-    }
-  };
 
   return (
     <div>
@@ -93,8 +53,12 @@ export default function ModalRegister({
         </Modal.Header>
         <Modal.Body className="bg-modal" style={{ background: "#1F1F1F" }}>
           {message && <Alert variant="danger">{message}</Alert>}
-          <Form onSubmit={handleOnSubmit}>
-            <Form.Group controlId="formFile" className="mb-3">
+          <Form>
+            <Form.Group
+              controlId="formFile"
+              className="mb-3"
+              onSubmit={handleOnSubmit}
+            >
               <Form.Control
                 onChange={handleOnChange}
                 name="email"
@@ -186,8 +150,6 @@ export default function ModalRegister({
           </Form>
         </Modal.Body>
       </Modal>
-
-      <ModalAlert messageShow={messageShow} setMessageShow={setMessageShow} />
     </div>
   );
 }
