@@ -3,13 +3,16 @@ import React, { useState } from "react";
 // import bootstrap
 import { Button, Modal, Form, Alert } from "react-bootstrap";
 
-export default function ModalAlert({ messageShow, setMessageShow }) {
+export default function ModalAlert({
+  messageShowSuccess,
+  setMessageShowSuccess,
+}) {
   return (
     <div>
       <Modal
         size="sm"
-        show={messageShow}
-        onHide={() => setMessageShow(false)}
+        show={messageShowSuccess}
+        onHide={() => setMessageShowSuccess(false)}
         aria-labelledby="example-modal-sizes-title-sm"
         style={{ borderColor: "#1F1F1F" }}
         centered

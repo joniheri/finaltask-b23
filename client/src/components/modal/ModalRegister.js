@@ -13,7 +13,7 @@ export default function ModalRegister({
   setRegisterShow,
 }) {
   const [messageShowFailed, setMessageShowFailed] = useState("");
-  const [messageShow, setMessageShow] = useState(false);
+  const [messageShowSuccess, setMessageShowSuccess] = useState(false);
 
   const [form, setForm] = useState({
     fullname: "",
@@ -68,7 +68,7 @@ export default function ModalRegister({
           address: "",
         });
         setRegisterShow(false);
-        setMessageShow(true);
+        setMessageShowSuccess(true);
       }
     } catch (error) {
       console.log("ErrorTryCath", error);
@@ -103,7 +103,11 @@ export default function ModalRegister({
                 type="email"
                 placeholder="Email"
                 required
-                className="input1"
+                style={{
+                  margin: "0 0 15px 0",
+                  background: "#4b4b4b",
+                  color: "#fff",
+                }}
               />
             </Form.Group>
             <Form.Group controlId="formFile" className="mb-3">
@@ -113,7 +117,11 @@ export default function ModalRegister({
                 type="password"
                 placeholder="Password"
                 required
-                className="input1"
+                style={{
+                  margin: "0 0 15px 0",
+                  background: "#4b4b4b",
+                  color: "#fff",
+                }}
               />
             </Form.Group>
             <Form.Group controlId="formFile" className="mb-3">
@@ -123,7 +131,11 @@ export default function ModalRegister({
                 type="text"
                 placeholder="Full Name"
                 required
-                className="input1"
+                style={{
+                  margin: "0 0 15px 0",
+                  background: "#4b4b4b",
+                  color: "#fff",
+                }}
               />
             </Form.Group>
             <Form.Group controlId="formFile" className="mb-3">
@@ -133,7 +145,11 @@ export default function ModalRegister({
                 type="text"
                 placeholder="Gender"
                 required
-                className="input1"
+                style={{
+                  margin: "0 0 15px 0",
+                  background: "#4b4b4b",
+                  color: "#fff",
+                }}
               />
             </Form.Group>
             <Form.Group controlId="formFile" className="mb-3">
@@ -143,7 +159,11 @@ export default function ModalRegister({
                 type="text"
                 placeholder="Phone"
                 required
-                className="input1"
+                style={{
+                  margin: "0 0 15px 0",
+                  background: "#4b4b4b",
+                  color: "#fff",
+                }}
               />
             </Form.Group>
             <Form.Group controlId="formFile" className="mb-3">
@@ -153,7 +173,11 @@ export default function ModalRegister({
                 type="text"
                 placeholder="Address"
                 required
-                className="input1"
+                style={{
+                  margin: "0 0 15px 0",
+                  background: "#4b4b4b",
+                  color: "#fff",
+                }}
               />
             </Form.Group>
             <Button
@@ -189,7 +213,10 @@ export default function ModalRegister({
         </Modal.Body>
       </Modal>
 
-      <ModalAlert messageShow={messageShow} setMessageShow={setMessageShow} />
+      <ModalAlert
+        messageShowSuccess={messageShowSuccess}
+        setMessageShowSuccess={setMessageShowSuccess}
+      />
     </div>
   );
 }
