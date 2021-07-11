@@ -3,7 +3,7 @@ import React, { useHistory, useContext, useState, useEffect } from "react";
 // import component bootstrap
 import { Button, Modal, Form, Alert } from "react-bootstrap";
 
-import { API } from "../../config/Api";
+import { API, setAuthToken } from "../../config/Api";
 
 import ModalAlert from "./ModalAlert";
 
@@ -17,7 +17,7 @@ export default function ModalLogin({
   const [messageShowFailed, setMessageShowFailed] = useState("");
   const [messageShowSuccess, setMessageShowSuccess] = useState(false);
 
-  const [formData, setForm] = useState({
+  const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
@@ -25,7 +25,7 @@ export default function ModalLogin({
   const { email, password } = formData;
 
   const handleOnChange = (e) => {
-    setForm({
+    setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
@@ -37,15 +37,15 @@ export default function ModalLogin({
     try {
       e.preventDefault();
 
+      const body = JSON.stringify({ ...formData });
+
       const config = {
         headers: {
           "Content-type": "application/json",
         },
       };
 
-      const body = JSON.stringify({ ...formData });
-
-      console.log("PrintBody: ", body);
+      // console.log("PrintBody: ", body);
 
       const respons = await API.post("/logindua", body, config); //-->this is sintact to inset to database
 
@@ -129,6 +129,9 @@ export default function ModalLogin({
                 </strong>
               </p>
             </center>
+            <pre style={{ color: "#fff" }}>
+              {JSON.stringify(formData, null, 3)}
+            </pre>
           </Form>
         </Modal.Body>
       </Modal>
