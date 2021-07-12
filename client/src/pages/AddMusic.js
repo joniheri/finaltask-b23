@@ -5,10 +5,10 @@ import { Container, Form, Button, Row, Col } from "react-bootstrap";
 
 export default function AddMusic() {
   return (
-    <Container>
-      <h1 style={{ color: "#fff", marginTop: "40px", marginBottom: "40px" }}>
+    <Container style={{ paddingTop: "60px" }}>
+      <h3 style={{ color: "#fff", marginTop: "40px", marginBottom: "40px" }}>
         Add Music
-      </h1>
+      </h3>
       <Form>
         <Row>
           <Col sm={9}>
@@ -20,7 +20,7 @@ export default function AddMusic() {
               required
               className="input1"
               style={{
-                padding: "0",
+                padding: "0 0 0 10px",
                 margin: "0 0 15px 0",
               }}
             />

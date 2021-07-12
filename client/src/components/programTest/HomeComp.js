@@ -25,7 +25,7 @@ export default function HomeComp() {
           />
           <Carousel.Caption>
             <h3>First slide label</h3>
-            <p>Hallo, I'am State user {state.user}</p>
+            <p>Hallo, Iam is first image slade</p>
           </Carousel.Caption>
         </Carousel.Item>
 

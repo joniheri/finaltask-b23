@@ -22,7 +22,6 @@ export default function MenuComp() {
               style={{
                 textDecoration: "none",
                 display: "flex",
-                justifyContent: "center",
                 alignItems: "center",
               }}
             >
@@ -30,6 +29,8 @@ export default function MenuComp() {
                 style={{
                   paddingLeft: "10px",
                   paddingRight: "10px",
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
                 }}
               >
                 Home
@@ -41,7 +42,6 @@ export default function MenuComp() {
               style={{
                 textDecoration: "none",
                 display: "flex",
-                justifyContent: "center",
                 alignItems: "center",
               }}
             >
@@ -49,12 +49,19 @@ export default function MenuComp() {
                 style={{
                   paddingLeft: "10px",
                   paddingRight: "10px",
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
                 }}
               >
                 Test Context
               </div>
             </Link>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+            <NavDropdown
+              title="Dropdown"
+              id="collasible-nav-dropdown"
+              className="hovertext1"
+              style={{ paddingLeft: "10px" }}
+            >
               <Link
                 to="/"
                 className="hover1"
@@ -64,7 +71,6 @@ export default function MenuComp() {
                   alignItems: "center",
                   paddingTop: "5px",
                   paddingBottom: "5px",
-                  title: "Home",
                 }}
               >
                 <div
@@ -118,21 +124,123 @@ export default function MenuComp() {
               style={{
                 textDecoration: "none",
                 display: "flex",
-                justifyContent: "center",
                 alignItems: "center",
               }}
             >
-              {!state.isAuthenticated && (
+              <div
+                style={{
+                  paddingLeft: "10px",
+                  paddingRight: "10px",
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                }}
+              >
+                Menu All User
+              </div>
+            </Link>
+            {!state.isAuthenticated && (
+              <Link
+                to="/blankpage"
+                className="hovertext1"
+                style={{
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
                 <div
                   style={{
                     paddingLeft: "10px",
                     paddingRight: "10px",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  Other Menu
+                </div>
+              </Link>
+            )}
+            {!state.isAuthenticated && (
+              <NavDropdown
+                title="Dropdown Public"
+                id="collasible-nav-dropdown"
+                className="hovertext1"
+                style={{ paddingLeft: "10px" }}
+              >
+                <Link
+                  to="/"
+                  className="hover1"
+                  style={{
+                    textDecoration: "none",
+                    display: "flex",
+                    alignItems: "center",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  <div
+                    style={{
+                      paddingLeft: "20px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    Home
+                  </div>
+                </Link>
+                <Link
+                  to="/context"
+                  className="hover1"
+                  style={{
+                    textDecoration: "none",
+                    display: "flex",
+                    alignItems: "center",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  <div
+                    style={{
+                      paddingLeft: "20px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    Test Context
+                  </div>
+                </Link>
+                <NavDropdown.Item href="#action/3.2">
+                  Another action
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">
+                  Something
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#action/3.4">
+                  Separated link
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
+            {state.isAuthenticated && (
+              <Link
+                to="/blankpage"
+                className="hovertext1"
+                style={{
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <div
+                  style={{
+                    paddingLeft: "10px",
+                    paddingRight: "10px",
+                    paddingTop: "5px",
+                    paddingBottom: "5px",
                   }}
                 >
                   Notif
                 </div>
-              )}
-            </Link>
+              </Link>
+            )}
             {state.isAuthenticated && (
               <Button
                 color="default"

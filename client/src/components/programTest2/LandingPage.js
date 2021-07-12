@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 
 // import component bootstrap
 import { Row, Col, Image, Card } from "react-bootstrap";
@@ -8,23 +9,22 @@ import ModalLogin from "./modal/ModalLogin";
 import ModalRegister from "./modal/ModalRegister";
 
 // import img
-import btnLogin from "../img/LoginButton.png";
-import btnRegister from "../img/ButtonRegister.png";
-import bgLandingPage from "../img/Rectangle1.png";
-import DUMBSOUND from "../img/DUMBSOUND.png";
-import LogoShapes from "../img/LogoShapes.png";
-import Rectangle4 from "../img/Rectangle4.png";
-import Rectangle5 from "../img/Rectangle5.png";
-import Rectangle6 from "../img/Rectangle6.png";
-import Rectangle7 from "../img/Rectangle7.png";
-import Rectangle8 from "../img/Rectangle8.png";
-import Rectangle9 from "../img/Rectangle9.png";
-import Rectangle10 from "../img/Rectangle10.png";
-import Rectangle11 from "../img/Rectangle11.png";
-import Rectangle12 from "../img/Rectangle12.png";
-import Rectangle13 from "../img/Rectangle13.png";
-import Rectangle14 from "../img/Rectangle14.png";
-import Rectangle15 from "../img/Rectangle15.png";
+import btnLogin from "../../img/LoginButton.png";
+import btnRegister from "../../img/ButtonRegister.png";
+import DUMBSOUND from "../../img/DUMBSOUND.png";
+import LogoShapes from "../../img/LogoShapes.png";
+import Rectangle4 from "../../img/Rectangle4.png";
+import Rectangle5 from "../../img/Rectangle5.png";
+import Rectangle6 from "../../img/Rectangle6.png";
+import Rectangle7 from "../../img/Rectangle7.png";
+import Rectangle8 from "../../img/Rectangle8.png";
+import Rectangle9 from "../../img/Rectangle9.png";
+import Rectangle10 from "../../img/Rectangle10.png";
+import Rectangle11 from "../../img/Rectangle11.png";
+import Rectangle12 from "../../img/Rectangle12.png";
+import Rectangle13 from "../../img/Rectangle13.png";
+import Rectangle14 from "../../img/Rectangle14.png";
+import Rectangle15 from "../../img/Rectangle15.png";
 
 export default function LandingPage({ stateLogin, setStateLogin }) {
   const [loginShow, setLoginShow] = useState(false);
@@ -179,13 +179,22 @@ export default function LandingPage({ stateLogin, setStateLogin }) {
           <Col sm={12}>
             <Row>
               <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle4} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
+                <Link
+                  onClick={onSwitchLogin}
+                  style={{
+                    cursor: "pointer",
+                    background: "green",
+                    textDecoration: "none",
+                  }}
+                >
+                  <Card style={{ background: "#3A3A3A", color: "#fff" }}>
+                    <Card.Img variant="top" src={Rectangle4} />
+                    <Card.Body>
+                      <Card.Title>Card Title</Card.Title>
+                      <Card.Text>Post Malon</Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Link>
               </Col>
               <Col sm={2} style={{ marginBottom: "20px" }}>
                 <Card style={{ background: "#3A3A3A", color: "#fff" }}>

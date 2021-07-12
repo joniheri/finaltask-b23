@@ -5,10 +5,10 @@ import { Container, Form, Button, Row, Col } from "react-bootstrap";
 
 export default function AddArtis() {
   return (
-    <Container>
-      <h1 style={{ color: "#fff", marginTop: "40px", marginBottom: "40px" }}>
+    <Container style={{ paddingTop: "60px" }}>
+      <h3 style={{ color: "#fff", marginTop: "40px", marginBottom: "40px" }}>
         Add Artis
-      </h1>
+      </h3>
       <Form>
         <Form.Control
           value=""

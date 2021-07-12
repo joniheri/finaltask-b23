@@ -6,7 +6,7 @@ import { API, setAuthToken } from "../../config/Api";
 import ModalAlert from "../modal/ModalAlert";
 
 export default function LoginComp() {
-  const { dispatch } = useContext(AuthContext);
+  const { state, dispatch } = useContext(AuthContext);
   const [messageShowSuccess, setMessageShowSuccess] = useState(false);
 
   const initialState = {
@@ -50,24 +50,54 @@ export default function LoginComp() {
       const response = await API.post("/logindua", body, config);
 
       console.log("DataResponse: ", response);
-      if (response.data.status === "Validate Failed") {
+
+      // ChekcConnection
+      if (response.data.status === "Failed") {
         setData({
           ...data,
           isSubmitting: false,
           errorMessage: response.data.message,
         });
-      } else if (response.data.status === "Failed") {
+        console.log("ResponseData: ", response.data);
+        console.log("DataStateUpdate: ", state);
+      }
+      // EndChekcConnection======
+
+      // CheckValidationInput
+      else if (response.data.status === "Validate Failed") {
         setData({
           ...data,
           isSubmitting: false,
           errorMessage: response.data.message,
         });
-      } else {
+        console.log("ResponseData: ", response.data);
+        console.log("DataStateUpdate: ", state);
+      }
+      // EndCheckValidationInput=======
+
+      //CheckEmailOrPasswordNotMatch
+      else if (response.data.status === "Respon failed") {
+        setData({
+          ...data,
+          isSubmitting: false,
+          errorMessage: response.data.message,
+        });
+        console.log("ResponseData: ", response.data);
+        console.log("DataStateUpdate: ", state);
+      }
+      //EndCheckEmailOrPasswordNotMatch===========
+
+      // IfLoginSuccess
+      else {
         dispatch({
           type: "LOGIN",
           payload: response.data,
         });
+        console.log("ResponseData: ", response.data);
+        console.log("DataStateUpdate: ", state);
+        console.log("state.isAuthenticated", state.isAuthenticated);
       }
+      // EndIfLoginSuccess==============
     } catch (error) {
       console.log("ErrorTryCath", error);
     }

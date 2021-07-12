@@ -44,6 +44,7 @@ const reducer = (state, action) => {
 export default function CheckLogin2() {
   const [state, dispatch] = useReducer(reducer, initialState);
   console.log("DataStateAwal: ", state);
+  console.log("state.isAuthenticated", state.isAuthenticated);
   return (
     <BrowserRouter>
       <Switch>
