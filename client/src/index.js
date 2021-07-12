@@ -13,12 +13,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 // import component
 import BootstrapDoc from "./components/BootstrapDoc";
 import CheckLogin from "./components/CheckLogin";
+import CheckLogin2 from "./components/CheckLogin2";
 
 ReactDOM.render(
   <React.StrictMode>
     {/* <App /> */}
     {/* <BootstrapDoc /> */}
-    <CheckLogin />
+    <CheckLogin2 />
   </React.StrictMode>,
   document.getElementById("root")
 );

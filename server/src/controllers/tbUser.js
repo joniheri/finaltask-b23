@@ -423,8 +423,8 @@ exports.loginDua = async (req, res) => {
         password: findEmail.password,
         password: findPassword,
         secretKey,
+        token,
       },
-      token,
     });
   } catch (error) {
     console.log(error);

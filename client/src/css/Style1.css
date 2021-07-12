@@ -1,0 +1,16 @@
+.hover1 {
+  color: #585858;
+}
+
+.hover1:hover {
+  color: #585858;
+  background-color: #c5c5c5;
+}
+
+.hovertext1 {
+  color: #dbdbdb;
+}
+
+.hovertext1:hover {
+  color: #585858;
+}
