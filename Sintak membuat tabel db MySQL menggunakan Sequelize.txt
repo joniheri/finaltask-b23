@@ -1,0 +1,8 @@
+// membuat tabel menggunakan sequelize
+--------------------------------------
+npx sequelize-cli model:generate --name table_name --attributes title:string,is_done:boolean,created_by:integer
+
+// contoh sintak sql relasi
+
+=====================================
+SELECT music.*, artis.* FROM music INNER JOIN artis ON (music.artisId=artis.id)

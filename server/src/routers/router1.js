@@ -63,4 +63,23 @@ router.get("/login", login);
 router.post("/logindua", loginDua);
 // end tbUser
 
+//tbArtis
+const { getArtis, addArtis } = require("../controllers/TbArtis"); //--Router user
+
+router.get("/artists", getArtis);
+router.post("/addartis", addArtis);
+// end tbUser
+
+//tbMusic
+const { getMusic } = require("../controllers/TbMusic"); //--Router user
+
+router.get("/musics", getMusic);
+// EndTbMusic
+
+//tbTransaction
+const { getTransaction } = require("../controllers/TbTransaction"); //--Router user
+
+router.get("/transaction", getTransaction);
+// EndTbTransaction
+
 module.exports = router;

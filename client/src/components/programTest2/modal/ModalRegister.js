@@ -1,10 +1,10 @@
-import React, { useHistory, useContext, useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // import component bootstrap
 import { Button, Modal, Form, Alert } from "react-bootstrap";
 
-// import { API } from "../../config/Api";
-// import ModalAlert from "./ModalAlert";
+import { API } from "../../../config/Api";
+import ModalAlert from "./ModalAlert";
 
 export default function ModalRegister({
   registerShow,
@@ -14,65 +14,65 @@ export default function ModalRegister({
   const [messageShowFailed, setMessageShowFailed] = useState("");
   const [messageShowSuccess, setMessageShowSuccess] = useState(false);
 
-  // const [form, setForm] = useState({
-  //   fullname: "",
-  //   email: "",
-  //   password: "",
-  //   gender: "",
-  //   phone: "",
-  //   address: "",
-  // });
+  const [form, setForm] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+    gender: "",
+    phone: "",
+    address: "",
+  });
 
-  // const { fullname, email, password, gender, phone, address } = form;
+  const { fullname, email, password, gender, phone, address } = form;
 
-  // const handleOnChange = (e) => {
-  //   setForm({
-  //     ...form,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
+  const handleOnChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  // console.log(form);
+  console.log(form);
 
-  // const handleOnSubmit = async (e) => {
-  //   try {
-  //     e.preventDefault();
+  const handleOnSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-  //     const config = {
-  //       headers: {
-  //         "Content-type": "application/json",
-  //       },
-  //     };
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
 
-  //     const body = JSON.stringify({ ...form });
+      const body = JSON.stringify({ ...form });
 
-  //     // console.log("PrintBody: ", body);
+      // console.log("PrintBody: ", body);
 
-  //     const respons = await API.post("/registeruser", body, config); //-->this is sintact to inset to database
+      const response = await API.post("/registeruser", body, config); //-->this is sintact to inset to database
 
-  //     console.log("DataSaved: ", respons);
+      console.log("DataSaved: ", response);
 
-  //     if (respons.data.status === "Validate Failed") {
-  //       setMessageShowFailed(respons.data.message);
-  //     } else if (respons.data.status === "Failed") {
-  //       setMessageShowFailed(respons.data.message);
-  //     } else {
-  //       setMessageShowFailed("");
-  //       setForm({
-  //         fullname: "",
-  //         email: "",
-  //         password: "",
-  //         gender: "",
-  //         phone: "",
-  //         address: "",
-  //       });
-  //       setRegisterShow(false);
-  //       setMessageShowSuccess(true);
-  //     }
-  //   } catch (error) {
-  //     console.log("ErrorTryCath", error);
-  //   }
-  // };
+      if (response.data.status === "Validate Failed") {
+        setMessageShowFailed(response.data.message);
+      } else if (response.data.status === "Failed") {
+        setMessageShowFailed(response.data.message);
+      } else {
+        setMessageShowFailed("");
+        setForm({
+          fullname: "",
+          email: "",
+          password: "",
+          gender: "",
+          phone: "",
+          address: "",
+        });
+        setRegisterShow(false);
+        setMessageShowSuccess(true);
+      }
+    } catch (error) {
+      console.log("ErrorTryCath", error);
+    }
+  };
 
   return (
     <div>
@@ -94,7 +94,7 @@ export default function ModalRegister({
           {messageShowFailed && (
             <Alert variant="danger">{messageShowFailed}</Alert>
           )}
-          {/* <Form onSubmit={handleOnSubmit}>
+          <Form onSubmit={handleOnSubmit}>
             <Form.Group controlId="formFile" className="mb-3">
               <Form.Control
                 onChange={handleOnChange}
@@ -208,14 +208,14 @@ export default function ModalRegister({
                 </strong>
               </p>
             </center>
-          </Form> */}
+          </Form>
         </Modal.Body>
       </Modal>
 
-      {/* <ModalAlert
+      <ModalAlert
         messageShowSuccess={messageShowSuccess}
         setMessageShowSuccess={setMessageShowSuccess}
-      /> */}
+      />
     </div>
   );
 }

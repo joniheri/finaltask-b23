@@ -19,7 +19,7 @@ export default function ModalAlert({
         style={{ color: "#155724" }}
       >
         <Modal.Body>
-          <h3 align="center">Register Success</h3>
+          <h3 align="center">Register Success!</h3>
         </Modal.Body>
       </Modal>
     </div>

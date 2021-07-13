@@ -323,11 +323,6 @@ export default function UserPeople({ stateLogin, setStateLogin }) {
           </Col>
         </Row>
       </div>
-      {/* Content */}
-      <Switch>
-        <Route exact path="/pay" component={Pay} />
-      </Switch>
-      {/* End Content */}
     </div>
   );
 }

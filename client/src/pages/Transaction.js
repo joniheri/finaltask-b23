@@ -34,12 +34,12 @@ export default function Transaction() {
         </thead>
         <tbody>
           <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Otto</td>
-            <td>Otto</td>
-            <td>Otto</td>
+            <td>1</td>
+            <td>Miao</td>
+            <td>bca.jpg</td>
+            <td>26/hari</td>
+            <td>Active</td>
+            <td>Aprove</td>
             <td style={{ textAlign: "center" }}>
               <Dropdown
                 align="end"

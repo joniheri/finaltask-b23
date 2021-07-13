@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
 // import component
 import LandingPage from "./LandingPage";
 import UserAdmin from "./UserAdmin";
+import UserPeople from "../UserPeople";
 
 // Context
 export const AppContext = createContext();

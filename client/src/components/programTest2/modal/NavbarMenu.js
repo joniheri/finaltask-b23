@@ -34,7 +34,7 @@ export default function NavbarMenu({ stateLogin, setStateLogin }) {
       expand="lg"
       variant="dark"
       fixed="top"
-      style={{ paddingTop: "15px" }}
+      style={{ paddingTop: "17px" }}
     >
       <Container fluid>
         <Link
@@ -49,6 +49,7 @@ export default function NavbarMenu({ stateLogin, setStateLogin }) {
           <Image
             src={LogoShapes}
             style={{
+              height: "26px",
               paddingLeft: "10px",
               paddingRight: "10px",
               paddingTop: "5px",
