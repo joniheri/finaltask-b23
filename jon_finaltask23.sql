@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2021 at 03:33 AM
+-- Generation Time: Jul 14, 2021 at 03:16 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -114,6 +114,13 @@ CREATE TABLE `transactions` (
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `startDate`, `dueDate`, `userId`, `attache`, `status`, `createdAt`, `updatedAt`) VALUES
+(1, '2021-07-13', '2021-07-13', 7, 'bca.jpg', 'Aproved', '2021-07-13 00:00:00', '2021-07-13 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -209,7 +216,7 @@ ALTER TABLE `music`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

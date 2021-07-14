@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": null,
-    "database": "jon_finaltask23",
+    "database": "jn_finaltask23",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

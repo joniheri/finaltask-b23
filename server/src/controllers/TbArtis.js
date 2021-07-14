@@ -1,12 +1,12 @@
-const { artis } = require("../../models");
+const { Artist } = require("../../models");
 const joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // GetDatas
-exports.getArtis = async (req, res) => {
+exports.getArtists = async (req, res) => {
   try {
-    const findDatas = await artis.findAll({
+    const findDatas = await Artist.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -20,19 +20,19 @@ exports.getArtis = async (req, res) => {
     console.log(error);
     res.send({
       status: "Response failed",
-      message: "View Test data Failed!",
+      message: "View data Failed! " + error,
     });
   }
 };
 // EndGetDatas
 
 // AddData
-exports.addArtis = async (req, res) => {
+exports.addArtist = async (req, res) => {
   try {
     const { body } = req;
-    await artis.create(body); //-->this is code create/input data to database
+    await Artist.create(body); //-->this is code create/input data to database
 
-    const findDatas = await artis.findAll({
+    const findDatas = await Artist.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },

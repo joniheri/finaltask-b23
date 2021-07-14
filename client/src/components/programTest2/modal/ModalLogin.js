@@ -106,6 +106,11 @@ export default function ModalLogin({
           type: "LOGIN",
           payload: response.data,
         });
+        setData({
+          ...data,
+          isSubmitting: false,
+          errorMessage: "",
+        });
         console.log("ResponseData: ", response.data);
         console.log("DataStateUpdate: ", state);
         console.log("state.isAuthenticated", state.isAuthenticated);
@@ -121,7 +126,16 @@ export default function ModalLogin({
       <Modal
         size="sm"
         show={loginShow}
-        onHide={() => setLoginShow(false)}
+        onHide={() => {
+          setLoginShow(false);
+          setData({
+            ...data,
+            isSubmitting: false,
+            errorMessage: "",
+            email: "",
+            password: "",
+          });
+        }}
         aria-labelledby="example-modal-sizes-title-sm"
         style={{ borderColor: "#1F1F1F  " }}
         centered

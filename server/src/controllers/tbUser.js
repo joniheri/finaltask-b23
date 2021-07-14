@@ -1,4 +1,4 @@
-const { user } = require("../../models");
+const { User } = require("../../models");
 const joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -6,11 +6,16 @@ const jwt = require("jsonwebtoken");
 // GetDatas
 exports.getUsers = async (req, res) => {
   try {
-    const findDatas = await user.findAll({
+    const findDatas = await User.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
     });
+    if (!findDatas) {
+      return res.send({
+        status: "Data is Null",
+      });
+    }
     res.send({
       status: "Respon success",
       message: "Test data Successfully get",
@@ -30,7 +35,7 @@ exports.getUsers = async (req, res) => {
 exports.detailUser = async (req, res) => {
   try {
     const id = req.params.id;
-    const findData = await user.findOne({
+    const findData = await User.findOne({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -63,9 +68,9 @@ exports.detailUser = async (req, res) => {
 exports.addUser = async (req, res) => {
   try {
     const { body } = req;
-    await user.create(body); //-->this is code create/input data to database
+    await User.create(body); //-->this is code create/input data to database
 
-    const findDatas = await user.findAll({
+    const findDatas = await User.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -91,7 +96,7 @@ exports.updateUser = async (req, res) => {
   try {
     // find data with id
     const id = req.params.id;
-    const findData = await user.findOne({
+    const findData = await User.findOne({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -110,14 +115,14 @@ exports.updateUser = async (req, res) => {
 
     // this is code update data with id to database
     const { body } = req;
-    await user.update(body, {
+    await User.update(body, {
       where: {
         id: id,
       },
     });
 
     // find all data after apdate
-    const findDatas = await user.findAll({
+    const findDatas = await User.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -145,7 +150,7 @@ exports.deleteUser = async (req, res) => {
   try {
     // find data with id
     const id = req.params.id;
-    const findData = await user.findOne({
+    const findData = await User.findOne({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -163,14 +168,14 @@ exports.deleteUser = async (req, res) => {
     }
 
     // this is code delete data in database with id
-    await user.destroy({
+    await User.destroy({
       where: {
         id: id,
       },
     });
 
     // find all data after delete
-    const findDatas = await user.findAll({
+    const findDatas = await User.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -221,7 +226,7 @@ exports.register = async (req, res) => {
     }
 
     // check "email user" is exist
-    const findEmail = await user.findOne({
+    const findEmail = await User.findOne({
       where: {
         email: email,
       },
@@ -244,7 +249,7 @@ exports.register = async (req, res) => {
     // end bcrypt password
 
     // imput data to database
-    const dataUser = await user.create({
+    const dataUser = await User.create({
       ...data,
       password: hashedPassword,
     });
@@ -283,77 +288,6 @@ exports.register = async (req, res) => {
 // EndRegister
 
 // Login
-exports.login = async (req, res) => {
-  try {
-    const data = req.body;
-    const { email, password } = req.body;
-
-    // validate input
-    const schema = joi.object({
-      email: joi.string().email().min(8).required(),
-      username: joi.string().min(6).required(),
-      password: joi.string().min(6).required(),
-    });
-
-    const { error } = schema.validate(data);
-    if (error) {
-      return res.send({
-        status: "Validate Failed",
-        message: error.details[0].message,
-      });
-    }
-    // end validate input
-
-    // check "email user" is exist
-    const findEmail = await user.findOne({
-      where: {
-        email: email,
-      },
-      attributes: {
-        exclude: ["createdAt", "updatedAt"],
-      },
-    });
-    if (findEmail) {
-      return res.send({
-        status: "Failed",
-        message: `Email: ${email} already registered`,
-        dataFindEmail: findEmail,
-      });
-    }
-    // end check "email user" is exist
-
-    // bcrypt password
-    const hashStrenght = 10;
-    const hashedPassword = await bcrypt.hash(password, hashStrenght);
-    // end bcrypt password
-
-    // imput data to database
-    const dataUser = await user.create({
-      ...data,
-      password: hashedPassword,
-    });
-    //  end imput data to database
-
-    res.send({
-      status: "Respon Success",
-      message: "Validate input ok",
-      data: {
-        email: dataUser.email,
-        username: dataUser.username,
-        password: dataUser.password,
-      },
-    });
-  } catch (error) {
-    console.log(error);
-    res.send({
-      status: "Respon failed",
-      message: "Register Failed!" + error,
-    });
-  }
-};
-// EndLogin
-
-// Login
 exports.loginDua = async (req, res) => {
   try {
     const dataBody = req.body;
@@ -374,7 +308,7 @@ exports.loginDua = async (req, res) => {
     }
 
     // check "email user" is exist
-    const findEmail = await user.findOne({
+    const findEmail = await User.findOne({
       where: {
         email: email,
       },
@@ -430,7 +364,7 @@ exports.loginDua = async (req, res) => {
     console.log(error);
     res.send({
       status: "Respon failed",
-      message: "Login Failed!" + error,
+      message: "Login Failed! " + error,
     });
   }
 };

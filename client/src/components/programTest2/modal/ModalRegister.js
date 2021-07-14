@@ -79,7 +79,19 @@ export default function ModalRegister({
       <Modal
         size="sm"
         show={registerShow}
-        onHide={() => setRegisterShow(false)}
+        onHide={() => {
+          setRegisterShow(false);
+          setMessageShowFailed("");
+          setForm({
+            ...form,
+            fullname: "",
+            email: "",
+            password: "",
+            gender: "",
+            phone: "",
+            address: "",
+          });
+        }}
         aria-labelledby="example-modal-sizes-title-sm"
         style={{ borderColor: "#1F1F1F" }}
         centered
@@ -208,6 +220,7 @@ export default function ModalRegister({
                 </strong>
               </p>
             </center>
+            {/* <pre style={{ color: "#fff" }}>{JSON.stringify(form, null, 3)}</pre> */}
           </Form>
         </Modal.Body>
       </Modal>

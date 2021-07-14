@@ -1,12 +1,12 @@
-const { music } = require("../../models");
+const { Music, Artist } = require("../../models");
 const joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // GetDatas
-exports.getMusic = async (req, res) => {
+exports.getMusics = async (req, res) => {
   try {
-    const findDatas = await music.findAll({
+    const findDatas = await Music.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -21,6 +21,37 @@ exports.getMusic = async (req, res) => {
     res.send({
       status: "Response failed",
       message: "View Test data Failed!",
+    });
+  }
+};
+// EndGetDatas
+
+// GetDatasHasOne
+exports.getMusicHashOne = async (req, res) => {
+  try {
+    const findDatas = await Music.findAll({
+      attributes: {
+        exclude: ["createdAt", "updatedAt"],
+      },
+      include: {
+        model: Artist,
+        as: "artist",
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "music.artiId"],
+        },
+      },
+    });
+    res.send({
+      status: "Response success",
+      message: "Get Datas Successfully",
+      viewDatas: findDatas,
+    });
+  } catch (error) {
+    console.log(error);
+    res.send({
+      status: "Response failed",
+      message: "View data Failed!",
+      error: error,
     });
   }
 };

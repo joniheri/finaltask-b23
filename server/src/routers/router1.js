@@ -49,7 +49,6 @@ const {
   updateUser,
   deleteUser,
   register,
-  login,
   loginDua,
 } = require("../controllers/tbUser"); //--Router user
 
@@ -59,21 +58,21 @@ router.post("/adduser", addUser);
 router.patch("/updateuser/:id", updateUser);
 router.delete("/deleteuser/:id", deleteUser);
 router.post("/registeruser/", register);
-router.get("/login", login);
 router.post("/logindua", loginDua);
 // end tbUser
 
 //tbArtis
-const { getArtis, addArtis } = require("../controllers/TbArtis"); //--Router user
+const { getArtists, addArtist } = require("../controllers/TbArtis"); //--Router user
 
-router.get("/artists", getArtis);
-router.post("/addartis", addArtis);
+router.get("/artists", getArtists);
+router.post("/addartis", addArtist);
 // end tbUser
 
 //tbMusic
-const { getMusic } = require("../controllers/TbMusic"); //--Router user
+const { getMusics, getMusicHashOne } = require("../controllers/TbMusic"); //--Router user
 
-router.get("/musics", getMusic);
+router.get("/musics", getMusics);
+router.get("/musicshasone", getMusicHashOne);
 // EndTbMusic
 
 //tbTransaction
