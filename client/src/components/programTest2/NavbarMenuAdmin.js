@@ -7,13 +7,13 @@ import { AppContext } from "./CheckLoginTest2";
 import "../../css/Style1.css";
 
 // import img
-import btnLogin from "../../img/LoginButton.png";
 import DUMBSOUND from "../../img/DUMBSOUND.png";
 import LogoShapes from "../../img/LogoShapes.png";
 import Ellipse2 from "../../img/Ellipse2.png";
 import Vector1 from "../../img/Vector1.png";
 import Vector2 from "../../img/Vector2.png";
 import Vector3 from "../../img/Vector3.png";
+import Vector4 from "../../img/Vector4.png";
 
 export default function NavbarMenuAdmin({ stateLogin, setStateLogin }) {
   const { state, dispatch } = useContext(AppContext);
@@ -98,9 +98,18 @@ export default function NavbarMenuAdmin({ stateLogin, setStateLogin }) {
                       style={{
                         borderTopLeftRadius: "3px",
                         borderTopRightRadius: "3px",
+                        fontSize: "15px",
+                        fontWeight: "bold",
                       }}
                     >
-                      <Image src={Vector1} style={{ marginRight: "20px" }} />
+                      <Image
+                        src={Vector1}
+                        style={{
+                          marginRight: "20px",
+                          height: "20px",
+                          width: "auto",
+                        }}
+                      />
                       Transaction
                     </a>
                   </Link>
@@ -117,9 +126,18 @@ export default function NavbarMenuAdmin({ stateLogin, setStateLogin }) {
                       style={{
                         borderTopLeftRadius: "3px",
                         borderTopRightRadius: "3px",
+                        fontSize: "15px",
+                        fontWeight: "bold",
                       }}
                     >
-                      <Image src={Vector1} style={{ marginRight: "20px" }} />
+                      <Image
+                        src={Vector4}
+                        style={{
+                          marginRight: "22px",
+                          height: "20px",
+                          width: "auto",
+                        }}
+                      />
                       Add Music
                     </a>
                   </Link>
@@ -131,8 +149,21 @@ export default function NavbarMenuAdmin({ stateLogin, setStateLogin }) {
                       margin: "0",
                     }}
                   >
-                    <a href="#">
-                      <Image src={Vector2} style={{ marginRight: "20px" }} />{" "}
+                    <a
+                      href="#"
+                      style={{
+                        fontSize: "15px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      <Image
+                        src={Vector2}
+                        style={{
+                          marginRight: "30px",
+                          height: "20px",
+                          width: "auto",
+                        }}
+                      />
                       Add Artis
                     </a>
                   </Link>
@@ -142,6 +173,8 @@ export default function NavbarMenuAdmin({ stateLogin, setStateLogin }) {
                     style={{
                       borderBottomLeftRadius: "3px",
                       borderBottomRightRadius: "3px",
+                      fontSize: "15px",
+                      fontWeight: "bold",
                     }}
                     onClick={() => {
                       dispatch({
@@ -149,7 +182,14 @@ export default function NavbarMenuAdmin({ stateLogin, setStateLogin }) {
                       });
                     }}
                   >
-                    <Image src={Vector3} style={{ marginRight: "20px" }} />
+                    <Image
+                      src={Vector3}
+                      style={{
+                        marginRight: "27px",
+                        height: "20px",
+                        width: "auto",
+                      }}
+                    />
                     Logout
                   </a>
                 </div>

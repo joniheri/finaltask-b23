@@ -22,11 +22,11 @@ export default function LandingPage2() {
       </Switch>
       {/* End Content */}
 
-      <ReactAudioPlayer
+      {/* <ReactAudioPlayer
         src="../../music/NEFFEX-Graveyard.ogg"
         autoPlay
         controls
-      />
+      /> */}
     </div>
   );
 }
