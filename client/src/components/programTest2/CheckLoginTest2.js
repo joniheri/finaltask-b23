@@ -2,9 +2,9 @@ import React, { createContext, useReducer } from "react";
 import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
 
 // import component
-import LandingPage from "./LandingPage";
+// import LandingPage from "./LandingPage";
 import UserAdmin from "./UserAdmin";
-import UserPeople from "../UserPeople";
+import LandingPage2 from "./LandingPage2";
 
 // Context
 export const AppContext = createContext();
@@ -52,7 +52,7 @@ export default function CheckLoginTest2() {
           dispatch,
         }}
       >
-        {!state.isAuthenticated ? <LandingPage /> : <UserAdmin />}
+        {!state.isAuthenticated ? <LandingPage2 /> : <UserAdmin />}
       </AppContext.Provider>
     </BrowserRouter>
   );

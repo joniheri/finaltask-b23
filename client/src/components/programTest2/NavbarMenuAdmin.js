@@ -1,21 +1,21 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Nav, Container, Navbar, Image } from "react-bootstrap";
-import { AppContext } from "../CheckLoginTest2";
+import { AppContext } from "./CheckLoginTest2";
 
 // import css
-import "../../../css/Style1.css";
+import "../../css/Style1.css";
 
 // import img
-import btnLogin from "../../../img/LoginButton.png";
-import DUMBSOUND from "../../../img/DUMBSOUND.png";
-import LogoShapes from "../../../img/LogoShapes.png";
-import Ellipse2 from "../../../img/Ellipse2.png";
-import Vector1 from "../../../img/Vector1.png";
-import Vector2 from "../../../img/Vector2.png";
-import Vector3 from "../../../img/Vector3.png";
+import btnLogin from "../../img/LoginButton.png";
+import DUMBSOUND from "../../img/DUMBSOUND.png";
+import LogoShapes from "../../img/LogoShapes.png";
+import Ellipse2 from "../../img/Ellipse2.png";
+import Vector1 from "../../img/Vector1.png";
+import Vector2 from "../../img/Vector2.png";
+import Vector3 from "../../img/Vector3.png";
 
-export default function NavbarMenu({ stateLogin, setStateLogin }) {
+export default function NavbarMenuAdmin({ stateLogin, setStateLogin }) {
   const { state, dispatch } = useContext(AppContext);
   const [loginShow, setLoginShow] = useState(false);
   const [registerShow, setRegisterShow] = useState(false);
@@ -29,7 +29,9 @@ export default function NavbarMenu({ stateLogin, setStateLogin }) {
     setLoginShow(false);
   };
   return (
+    // <h1>This Is NavbarMenuAdmin</h1>
     <Navbar
+      className="nav-bg1"
       collapseOnSelect
       expand="lg"
       variant="dark"

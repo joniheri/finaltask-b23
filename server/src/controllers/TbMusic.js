@@ -8,7 +8,7 @@ exports.getMusics = async (req, res) => {
   try {
     const findDatas = await Music.findAll({
       attributes: {
-        exclude: ["createdAt", "updatedAt"],
+        exclude: ["artistId", "createdAt", "updatedAt"],
       },
     });
     res.send({
@@ -31,7 +31,7 @@ exports.getMusicHashOne = async (req, res) => {
   try {
     const findDatas = await Music.findAll({
       attributes: {
-        exclude: ["createdAt", "updatedAt"],
+        exclude: ["createdAt", "updatedAt", "artistId"],
       },
       include: {
         model: Artist,

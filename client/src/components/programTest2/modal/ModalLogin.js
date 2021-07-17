@@ -64,7 +64,7 @@ export default function ModalLogin({
 
       console.log("DataResponse: ", response);
 
-      // ChekcConnection
+      // CheckEmailOrPasswordNotMatch
       if (response.data.status === "Failed") {
         setData({
           ...data,
@@ -74,7 +74,7 @@ export default function ModalLogin({
         console.log("ResponseData: ", response.data);
         console.log("DataStateUpdate: ", state);
       }
-      // EndChekcConnection======
+      // EndCheckEmailOrPasswordNotMatch======
 
       // CheckValidationInput
       else if (response.data.status === "Validate Failed") {
@@ -88,7 +88,7 @@ export default function ModalLogin({
       }
       // EndCheckValidationInput=======
 
-      //CheckEmailOrPasswordNotMatch
+      //CheckConnection
       else if (response.data.status === "Respon failed") {
         setData({
           ...data,
@@ -98,7 +98,7 @@ export default function ModalLogin({
         console.log("ResponseData: ", response.data);
         console.log("DataStateUpdate: ", state);
       }
-      //EndCheckEmailOrPasswordNotMatch===========
+      //EndCheckConnection===========
 
       // IfLoginSuccess
       else {

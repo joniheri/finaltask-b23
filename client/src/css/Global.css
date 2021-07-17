@@ -136,3 +136,9 @@
     border-right: none;
   } */
 }
+
+@media only screen and (max-height: 100px) {
+  .nav-bg1 {
+    background: #181818;
+  }
+}

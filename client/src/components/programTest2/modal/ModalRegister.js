@@ -52,11 +52,26 @@ export default function ModalRegister({
 
       console.log("DataSaved: ", response);
 
+      // CheckValidationInput
       if (response.data.status === "Validate Failed") {
         setMessageShowFailed(response.data.message);
-      } else if (response.data.status === "Failed") {
+      }
+      // EndCheckValidationInput
+
+      // CheckEmail
+      else if (response.data.status === "Failed") {
         setMessageShowFailed(response.data.message);
-      } else {
+      }
+      // EndCheckEmail
+
+      //CheckEmailOrConnection
+      else if (response.data.status === "Respon failed") {
+        setMessageShowFailed(response.data.message);
+      }
+      //EndCheckEmailOrPasswordNotMatch===========
+
+      // IfSuccess
+      else {
         setMessageShowFailed("");
         setForm({
           fullname: "",
@@ -69,6 +84,7 @@ export default function ModalRegister({
         setRegisterShow(false);
         setMessageShowSuccess(true);
       }
+      // EndIfSuccess
     } catch (error) {
       console.log("ErrorTryCath", error);
     }

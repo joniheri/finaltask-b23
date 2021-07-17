@@ -3,6 +3,9 @@ import React, { useState, useContext } from "react";
 // import react-router-dom
 import { BrowserRouter as Router, Switch, Link, Route } from "react-router-dom";
 
+// import react-audio-payer
+import ReactAudioPlayer from "react-audio-player";
+
 // import component bootstrap
 import { Row, Col, Image } from "react-bootstrap";
 
@@ -13,7 +16,7 @@ import Dashboard from "../../pages/Dashboard";
 import AddMusic from "../../pages/AddMusic";
 import AddArtis from "../../pages/AddArtis";
 import Transaction from "../../pages/Transaction";
-import NavbarMenu from "./modal/NavbarMenu";
+import NavbarMenu from "./NavbarMenuAdmin";
 import { AppContext } from "./CheckLoginTest2";
 
 // import img
@@ -51,6 +54,17 @@ export default function UserAdmin({ stateLogin, setStateLogin }) {
         <Route exact path="/addartis" component={AddArtis} />
       </Switch>
       {/* End Content */}
+      {/* <ReactAudioPlayer
+        src="../../music/NEFFEX-Graveyard.ogg"
+        autoPlay
+        controls
+        style={{
+          position: "fixed",
+          left: "0",
+          bottom: "0",
+          width: "100%",
+        }}
+      /> */}
     </div>
   );
 }

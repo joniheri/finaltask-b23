@@ -2,6 +2,10 @@
 --------------------------------------
 npx sequelize-cli model:generate --name table_name --attributes title:string,is_done:boolean,created_by:integer
 
+// setelah itu , lakukan db:migrate
+----------------------------------
+npx sequelize db:migrate
+
 // contoh sintak sql relasi
 
 =====================================

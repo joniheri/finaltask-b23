@@ -1,4 +1,4 @@
-const { transaction } = require("../../models");
+const { Transaction } = require("../../models");
 const joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 // GetDatas
 exports.getTransaction = async (req, res) => {
   try {
-    const findDatas = await transaction.findAll({
+    const findDatas = await Transaction.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt"],
       },
@@ -21,6 +21,7 @@ exports.getTransaction = async (req, res) => {
     res.send({
       status: "Response failed",
       message: "View Test data Failed!",
+      error: error,
     });
   }
 };
