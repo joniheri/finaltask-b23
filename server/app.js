@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const port = 4001;
 
+const multer = require("multer");
+const upload = multer({ dest: "img/" });
+
 app.use(express.json());
 
 // import dotenv
@@ -9,6 +12,8 @@ require("dotenv").config();
 
 // import cors
 const cors = require("cors");
+
+app.use(express.static("public"));
 
 app.use(cors());
 

@@ -99,116 +99,14 @@ export default function Dashboard() {
               {music?.map((dataMusic, index) => (
                 <Col sm={2} style={{ marginBottom: "20px" }}>
                   <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                    <Card.Img
-                      variant="top"
-                      src={"../img/" + dataMusic.thumbnail}
-                    />
+                    <Card.Img variant="top" src={dataMusic.thumbnail} />
                     <Card.Body>
-                      <Card.Title>Card Title</Card.Title>
-                      <Card.Text>Post Malon</Card.Text>
+                      <Card.Title>{dataMusic.title}</Card.Title>
+                      <Card.Text>{dataMusic.artist.name}</Card.Text>
                     </Card.Body>
                   </Card>
                 </Col>
               ))}
-              {/* <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle5} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle6} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle7} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle8} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle9} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle10} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle11} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle12} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle13} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle14} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle15} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col> */}
             </Row>
           </Col>
         </Row>

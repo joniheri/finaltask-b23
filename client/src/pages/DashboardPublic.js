@@ -56,6 +56,8 @@ export default function DashboardPublic({ stateLogin, setStateLogin }) {
     setLoginShow(false);
   };
 
+  console.log("DataMusic : ", music);
+
   return (
     <Container fluid>
       {/* Content */}
@@ -125,13 +127,10 @@ export default function DashboardPublic({ stateLogin, setStateLogin }) {
                     }}
                   >
                     <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                      <Card.Img
-                        variant="top"
-                        src={require("../img/Rectangle6.png").default}
-                      />
+                      <Card.Img variant="top" src={dataMusic.thumbnail} />
                       <Card.Body>
-                        <Card.Title>{"../img/" + dataMusic.title}</Card.Title>
-                        <Card.Text>{dataMusic.thumbnail}</Card.Text>
+                        <Card.Title>{dataMusic.title}</Card.Title>
+                        <Card.Text>{dataMusic.artist.name}</Card.Text>
                       </Card.Body>
                     </Card>
                   </Link>
