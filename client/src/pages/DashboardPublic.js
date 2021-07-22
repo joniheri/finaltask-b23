@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+
+// import config
+import { API } from "../config/Api";
 
 import { Row, Col, Card, Container } from "react-bootstrap";
 
@@ -25,6 +28,23 @@ export default function DashboardPublic({ stateLogin, setStateLogin }) {
   const [loginShow, setLoginShow] = useState(false);
   const [registerShow, setRegisterShow] = useState(false);
 
+  const [music, setMusic] = useState([]);
+
+  // loadDatasMusic
+  const loadMusic = async () => {
+    try {
+      const response = await API.get("/musicshasone");
+      setMusic(response.data.viewDatas);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    loadMusic();
+  }, []);
+  // console.log(music);
+  // EndLoadDatasMusic
+
   // const directoryImg = "../img";
 
   const onSwitchLogin = () => {
@@ -35,6 +55,7 @@ export default function DashboardPublic({ stateLogin, setStateLogin }) {
     setRegisterShow(true);
     setLoginShow(false);
   };
+
   return (
     <Container fluid>
       {/* Content */}
@@ -94,27 +115,29 @@ export default function DashboardPublic({ stateLogin, setStateLogin }) {
           </Col>
           <Col sm={12}>
             <Row>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Link
-                  onClick={onSwitchLogin}
-                  style={{
-                    cursor: "pointer",
-                    textDecoration: "none",
-                  }}
-                >
-                  <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                    <Card.Img
-                      variant="top"
-                      src={require("../img/Rectangle4.png").default}
-                    />
-                    <Card.Body>
-                      <Card.Title>Card Title</Card.Title>
-                      <Card.Text>Post Malon</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </Link>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
+              {music?.map((dataMusic, index) => (
+                <Col sm={2} style={{ marginBottom: "20px" }}>
+                  <Link
+                    onClick={onSwitchLogin}
+                    style={{
+                      cursor: "pointer",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <Card style={{ background: "#3A3A3A", color: "#fff" }}>
+                      <Card.Img
+                        variant="top"
+                        src={require("../img/Rectangle6.png").default}
+                      />
+                      <Card.Body>
+                        <Card.Title>{"../img/" + dataMusic.title}</Card.Title>
+                        <Card.Text>{dataMusic.thumbnail}</Card.Text>
+                      </Card.Body>
+                    </Card>
+                  </Link>
+                </Col>
+              ))}
+              {/* <Col sm={2} style={{ marginBottom: "20px" }}>
                 <Card style={{ background: "#3A3A3A", color: "#fff" }}>
                   <Card.Img variant="top" src={Rectangle5} />
                   <Card.Body>
@@ -125,7 +148,10 @@ export default function DashboardPublic({ stateLogin, setStateLogin }) {
               </Col>
               <Col sm={2} style={{ marginBottom: "20px" }}>
                 <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle6} />
+                  <Card.Img
+                    variant="top"
+                    src={require("../img/Rectangle6.png").default}
+                  />
                   <Card.Body>
                     <Card.Title>Card Title</Card.Title>
                     <Card.Text>Post Malon</Card.Text>
@@ -212,7 +238,7 @@ export default function DashboardPublic({ stateLogin, setStateLogin }) {
                     <Card.Text>Post Malon</Card.Text>
                   </Card.Body>
                 </Card>
-              </Col>
+              </Col> */}
             </Row>
           </Col>
         </Row>

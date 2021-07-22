@@ -37,21 +37,24 @@ export default function AddArtis() {
 
       const body = JSON.stringify({ ...data });
 
+      console.log("formDataBody: ", body);
+
       const response = await API.post("/addartis", body, config); //-->this is sintact to inset to database
 
       console.log("DataSaved: ", response);
 
       if (response.data.status === "Response failed") {
         setMessageShowFailed(response.data.message);
+      } else if (response.data.status === "Validate Failed") {
+        setMessageShowFailed(response.data.message);
       } else {
-        setMessageShowFailed("");
         setData({
           name: "",
           old: "",
           type: "",
           startCareer: "",
-          MessageSen: "Add Artis Success!",
         });
+        setMessageShowFailed("");
         setMessageNotif("Add Artis Success!");
       }
     } catch (error) {

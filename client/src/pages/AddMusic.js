@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 
 // import component bootsrtrap
-import { Container, Form, Button, Row, Col } from "react-bootstrap";
+import { Container, Form, Button, Row, Col, Alert } from "react-bootstrap";
 
 // import config
 import { API } from "../config/Api";
 
 export default function AddMusic() {
   const [artis, setArtis] = useState([]);
+  const [messageShowFailed, setMessageShowFailed] = useState("");
+  const [messageNotif, setMessageNotif] = useState("");
 
   const [data, setData] = useState({
     title: "",
     year: "",
-    singer: "",
     thumbnail: "",
     attache: "",
+    artistId: "",
   });
 
   const handleInputChange = (event) => {
@@ -33,7 +35,6 @@ export default function AddMusic() {
       console.log(error);
     }
   };
-
   useEffect(() => {
     loadArtis();
   }, []);
@@ -41,48 +42,55 @@ export default function AddMusic() {
   // EndLoadDatasArtis
 
   // SaveDataToDatabase
-  // const { name, old, type, startCareer } = data;
+  const { title, year, thumbnail, attache, artistId } = data;
 
-  // const handleOnSubmit = async (e) => {
-  //   try {
-  //     e.preventDefault();
+  const handleOnSubmit = async (e) => {
+    try {
+      e.preventDefault();
 
-  //     const config = {
-  //       headers: {
-  //         "Content-type": "application/json",
-  //       },
-  //     };
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
 
-  //     const body = JSON.stringify({ ...data });
+      const body = JSON.stringify({ ...data });
 
-  //     const response = await API.post("/addartis", body, config); //-->this is sintact to inset to database
+      console.log("formDataBody: ", body);
 
-  //     console.log("DataSaved: ", response);
+      const response = await API.post("/addmusic", body, config); //-->this is sintact to inset to database
 
-  //     if (response.data.status === "Response failed") {
-  //       setMessageShowFailed(response.data.message);
-  //     } else {
-  //       setMessageShowFailed("");
-  //       setData({
-  //         name: "",
-  //         old: "",
-  //         type: "",
-  //         startCareer: "",
-  //         MessageSen: "Add Artis Success!",
-  //       });
-  //       setMessageNotif("Add Artis Success!");
-  //     }
-  //   } catch (error) {
-  //     console.log("ErrorTryCath", error);
-  //   }
-  // };
+      console.log("DataSaved: ", response);
+
+      if (response.data.status === "Response Failed") {
+        setMessageShowFailed(response.data.message);
+      } else if (response.data.status === "Validate Failed") {
+        setMessageShowFailed(response.data.message);
+      } else {
+        setData({
+          title: "",
+          year: "",
+          thumbnail: "",
+          attache: "",
+          artistId: "",
+        });
+        setMessageShowFailed("");
+        setMessageNotif("Add Data Success!");
+      }
+    } catch (error) {
+      console.log("ErrorTryCath", error);
+    }
+  };
   // EndSaveDataToDatabase
+
   return (
     <Container style={{ paddingTop: "60px" }}>
       <h3 style={{ color: "#fff", marginTop: "40px", marginBottom: "40px" }}>
         Add Music
       </h3>
-      <Form>
+      {messageShowFailed && <Alert variant="danger">{messageShowFailed}</Alert>}
+      {messageNotif && <Alert variant="success">{messageNotif}</Alert>}
+      <Form onSubmit={handleOnSubmit}>
         <Row>
           <Col sm={9}>
             <Form.Control
@@ -102,6 +110,7 @@ export default function AddMusic() {
           <Col sm={3}>
             <Form.Control
               onChange={handleInputChange}
+              value={data.thumbnail}
               name="thumbnail"
               type="file"
               title="Thumbnail"
@@ -120,6 +129,7 @@ export default function AddMusic() {
         <Form.Control
           onChange={handleInputChange}
           value={data.year}
+          value={data.year}
           name="year"
           type="number"
           placeholder="Year"
@@ -129,15 +139,15 @@ export default function AddMusic() {
         />
         <select
           onChange={handleInputChange}
-          value={data.singer}
-          name="singer"
+          value={data.artistId}
+          name="artistId"
           style={{
             width: "100%",
             height: "38px",
             borderRadius: "5px",
           }}
         >
-          <option style={{}}>--Select Singer--</option>
+          <option>--Select Singer--</option>
           {artis?.map((dataArtis, index) => (
             <option value={dataArtis.id}>
               {dataArtis.id} - {dataArtis.name}
@@ -165,9 +175,10 @@ export default function AddMusic() {
           <Col sm={3}>
             <Form.Control
               onChange={handleInputChange}
+              value={data.attache}
               name="attache"
               type="file"
-              title="Thumbnail"
+              title="Attache"
               style={{
                 border: "1px solid #fff",
                 borderRadius: "3px",

@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Row, Col, Card } from "react-bootstrap";
+
+// import config
+import { API } from "../config/Api";
 
 // import img
 import Rectangle4 from "../img/Rectangle4.png";
@@ -17,6 +20,23 @@ import Rectangle14 from "../img/Rectangle14.png";
 import Rectangle15 from "../img/Rectangle15.png";
 
 export default function Dashboard() {
+  const [music, setMusic] = useState([]);
+
+  // loadDatasMusic
+  const loadMusic = async () => {
+    try {
+      const response = await API.get("/musicshasone");
+      setMusic(response.data.viewDatas);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    loadMusic();
+  }, []);
+  // console.log(music);
+  // EndLoadDatasMusic
+
   return (
     <div>
       {/* Content */}
@@ -76,16 +96,21 @@ export default function Dashboard() {
           </Col>
           <Col sm={12}>
             <Row>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle4} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
+              {music?.map((dataMusic, index) => (
+                <Col sm={2} style={{ marginBottom: "20px" }}>
+                  <Card style={{ background: "#3A3A3A", color: "#fff" }}>
+                    <Card.Img
+                      variant="top"
+                      src={"../img/" + dataMusic.thumbnail}
+                    />
+                    <Card.Body>
+                      <Card.Title>Card Title</Card.Title>
+                      <Card.Text>Post Malon</Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+              {/* <Col sm={2} style={{ marginBottom: "20px" }}>
                 <Card style={{ background: "#3A3A3A", color: "#fff" }}>
                   <Card.Img variant="top" src={Rectangle5} />
                   <Card.Body>
@@ -183,7 +208,7 @@ export default function Dashboard() {
                     <Card.Text>Post Malon</Card.Text>
                   </Card.Body>
                 </Card>
-              </Col>
+              </Col> */}
             </Row>
           </Col>
         </Row>
