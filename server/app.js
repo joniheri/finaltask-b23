@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const port = 4001;
 
-const multer = require("multer");
-const upload = multer({ dest: "img/" });
+// const multer = require("multer");
+// const upload = multer({ dest: "img/" });
 
 app.use(express.json());
 
