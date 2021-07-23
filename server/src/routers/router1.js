@@ -2,7 +2,8 @@
 const express = require("express");
 const router = express.Router();
 
-// const { authMiddle } = require("../middleware/authMiddle");
+// middleWareUploadFile
+const { UploadFiles } = require("../middleware/UploadFiles");
 
 // auth
 // const { checkAuth, authMiddle } = require("../controllers/Auth"); //--Router auth
@@ -42,11 +43,13 @@ const {
   getMusics,
   getMusicHashOne,
   addMusic,
-} = require("../controllers/TbMusic"); //--Router user
+  addMusicWithFile,
+} = require("../controllers/TbMusic"); //--Router TbMusic
 
 router.get("/musics", getMusics);
 router.get("/musicshasone", getMusicHashOne);
 router.post("/addmusic", addMusic);
+router.post("/addmusicwithfile", UploadFiles("imageFile"), addMusicWithFile);
 // EndTbMusic
 
 //tbTransaction

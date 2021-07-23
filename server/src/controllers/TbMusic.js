@@ -118,4 +118,29 @@ exports.addMusic = async (req, res) => {
     });
   }
 };
+
+exports.addMusicWithFile = async (req, res) => {
+  try {
+    const data = req.body;
+    const thumbnail = req.files.imageFile[0].filename;
+
+    const dataUpload = {
+      ...data,
+      thumbnail,
+    };
+
+    const response = await Music.create(dataUpload); // add data
+
+    res.send({
+      status: "Response Success",
+      message: "Upload data success",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status({
+      status: "Response Failed",
+      message: "Server Error",
+    });
+  }
+};
 // EndAddData
