@@ -12,23 +12,16 @@ import ModalRegister from "../components/programTest2/modal/ModalRegister";
 
 // import img
 // import Rectangle4 from "../img/Rectangle4.png";
-// import Rectangle5 from "../img/Rectangle5.png";
-// import Rectangle6 from "../img/Rectangle6.png";
-// import Rectangle7 from "../img/Rectangle7.png";
-// import Rectangle8 from "../img/Rectangle8.png";
-// import Rectangle9 from "../img/Rectangle9.png";
-// import Rectangle10 from "../img/Rectangle10.png";
-// import Rectangle11 from "../img/Rectangle11.png";
-// import Rectangle12 from "../img/Rectangle12.png";
-// import Rectangle13 from "../img/Rectangle13.png";
-// import Rectangle14 from "../img/Rectangle14.png";
-// import Rectangle15 from "../img/Rectangle15.png";
 
 export default function DashboardPublic({ stateLogin, setStateLogin }) {
   const [loginShow, setLoginShow] = useState(false);
   const [registerShow, setRegisterShow] = useState(false);
-
   const [music, setMusic] = useState([]);
+
+  const onSwitchLogin = () => {
+    setRegisterShow(false);
+    setLoginShow(true);
+  };
 
   // loadDatasMusic
   const loadMusic = async () => {
@@ -42,21 +35,10 @@ export default function DashboardPublic({ stateLogin, setStateLogin }) {
   useEffect(() => {
     loadMusic();
   }, []);
-  // console.log(music);
+  console.log("DataMusic:", music);
   // EndLoadDatasMusic
 
-  // const directoryImg = "../img";
-
-  const onSwitchLogin = () => {
-    setRegisterShow(false);
-    setLoginShow(true);
-  };
-  const onSwitchRegister = () => {
-    setRegisterShow(true);
-    setLoginShow(false);
-  };
-
-  console.log("DataMusic : ", music);
+  console.log("PatchAPI: ", API);
 
   return (
     <Container fluid>
@@ -136,108 +118,6 @@ export default function DashboardPublic({ stateLogin, setStateLogin }) {
                   </Link>
                 </Col>
               ))}
-              {/* <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle5} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img
-                    variant="top"
-                    src={require("../img/Rectangle6.png").default}
-                  />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle7} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle8} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle9} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle10} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle11} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle12} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle13} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle14} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col sm={2} style={{ marginBottom: "20px" }}>
-                <Card style={{ background: "#3A3A3A", color: "#fff" }}>
-                  <Card.Img variant="top" src={Rectangle15} />
-                  <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-                    <Card.Text>Post Malon</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col> */}
             </Row>
           </Col>
         </Row>
