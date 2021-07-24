@@ -13,9 +13,9 @@ require("dotenv").config();
 // import cors
 const cors = require("cors");
 
-app.use(express.static("public"));
-
 app.use(cors());
+app.use(express.static("public"));
+app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -29,7 +29,6 @@ app.get("/about", (req, res) => {
 
 // import our router1
 const router1 = require("./src/routers/router1");
-
 app.use("/api/v1/", router1);
 // end router1=================
 

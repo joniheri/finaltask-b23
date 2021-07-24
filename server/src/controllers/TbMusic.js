@@ -2,6 +2,7 @@ const { Music, Artist } = require("../../models");
 const joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { json } = require("sequelize/types");
 
 // GetDatas
 exports.getMusics = async (req, res) => {
@@ -29,6 +30,8 @@ exports.getMusics = async (req, res) => {
 // GetDatasHasOne
 exports.getMusicHashOne = async (req, res) => {
   try {
+    // const pathFile = process.env.PATCH_UPLOADS;
+
     const findDatas = await Music.findAll({
       attributes: {
         exclude: ["createdAt", "updatedAt", "artistId"],
@@ -41,6 +44,16 @@ exports.getMusicHashOne = async (req, res) => {
         },
       },
     });
+
+    // const parseJSON = JSON.parse(JSON.stringify(findDatas));
+
+    // findDatas = parseJSON.map((item) => {
+    //   return {
+    //     ...item,
+    //     thumbnail: pathFile + item.thumbnail,
+    //   };
+    // });
+
     res.send({
       status: "Response success",
       message: "Get Datas Successfully",
