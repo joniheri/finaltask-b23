@@ -2,7 +2,6 @@ const { Music, Artist } = require("../../models");
 const joi = require("joi");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { json } = require("sequelize/types");
 
 // GetDatas
 exports.getMusics = async (req, res) => {
