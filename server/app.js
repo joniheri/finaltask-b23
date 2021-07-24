@@ -14,7 +14,7 @@ require("dotenv").config();
 const cors = require("cors");
 
 app.use(cors());
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.use("/uploads", express.static("uploads"));
 
 app.get("/", (req, res) => {
