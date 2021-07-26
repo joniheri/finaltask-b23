@@ -31,7 +31,7 @@ export default function NavbarMenuAdmin({ stateLogin, setStateLogin }) {
   return (
     // <h1>This Is NavbarMenuAdmin</h1>
     <Navbar
-      className="nav-bg1"
+      className="nav-bg1 shadow"
       collapseOnSelect
       expand="lg"
       variant="dark"

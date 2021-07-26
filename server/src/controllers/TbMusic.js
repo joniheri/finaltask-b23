@@ -130,7 +130,9 @@ exports.addMusic = async (req, res) => {
     });
   }
 };
+// EndAddData
 
+// AddData2
 exports.addMusicWithFile = async (req, res) => {
   try {
     const data = req.body;
@@ -155,4 +157,76 @@ exports.addMusicWithFile = async (req, res) => {
     });
   }
 };
-// EndAddData
+// EndAddData2
+
+// DeleteMusic
+exports.deleteMusic = async (req, res) => {
+  try {
+    // find data with id
+    const id = req.params.id;
+    const findData = await Music.findOne({
+      attributes: {
+        exclude: ["createdAt", "updatedAt", "artistId"],
+      },
+      include: {
+        model: Artist,
+        as: "artist",
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "music.artiId"],
+        },
+      },
+      where: {
+        id: id,
+      },
+    });
+
+    // cek data
+    if (!findData) {
+      return res.send({
+        status: "Respon Failed",
+        message: `Data with id:${id} not found`,
+      });
+    }
+
+    // res.send({
+    //   data: findData,
+    // });
+
+    // this is code delete data in database with id
+    // const response = await Music.destroy({
+    //   where: {
+    //     id: id,
+    //   },
+    // });
+
+    // // find all data after delete
+    // const findDatas = await User.findAll({
+    //   attributes: {
+    //     exclude: ["createdAt", "updatedAt", "artistId"],
+    //   },
+    //   include: {
+    //     model: Artist,
+    //     as: "artist",
+    //     attributes: {
+    //       exclude: ["createdAt", "updatedAt", "music.artiId"],
+    //     },
+    //   },
+    // });
+
+    // // respon delete success
+    // res.send({
+    //   status: "Respon success",
+    //   message: "Delete data Successfully!",
+    //   viewDataWillDelete: findData,
+    //   viewDataAfterUpdate: findDatas,
+    // });
+  } catch (error) {
+    console.log(error);
+    res.send({
+      status: "Respon failed",
+      message: "Delete data Failed!",
+      error: error,
+    });
+  }
+};
+// EndDeleteMusic

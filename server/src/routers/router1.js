@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 // middleWareUploadFile
-const { UploadFiles } = require("../middleware/UploadFiles");
+const { UploadFiles, UploadFile2 } = require("../middleware/UploadFiles");
 
 // auth
 // const { checkAuth, authMiddle } = require("../controllers/Auth"); //--Router auth
@@ -44,12 +44,15 @@ const {
   getMusicHashOne,
   addMusic,
   addMusicWithFile,
+  deleteMusic,
 } = require("../controllers/TbMusic"); //--Router TbMusic
 
 router.get("/musics", getMusics);
 router.get("/musicshasone", getMusicHashOne);
 router.post("/addmusic", addMusic);
 router.post("/addmusicwithfile", UploadFiles("imageFile"), addMusicWithFile);
+router.post("/addmusic2", UploadFile2("imageFile"), addMusicWithFile);
+router.delete("/deletemusic/:id", deleteMusic, addMusicWithFile);
 // EndTbMusic
 
 //tbTransaction

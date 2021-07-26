@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { Row, Col, Card } from "react-bootstrap";
+import { Row, Col, Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 // import config
 import { API } from "../config/Api";
@@ -103,6 +104,9 @@ export default function Dashboard() {
                     <Card.Body>
                       <Card.Title>{dataMusic.title}</Card.Title>
                       <Card.Text>{dataMusic.artist.name}</Card.Text>
+                      <a>
+                        <Button variant="danger">Delete</Button>
+                      </a>
                     </Card.Body>
                   </Card>
                 </Col>
