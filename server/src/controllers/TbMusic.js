@@ -77,18 +77,17 @@ exports.addMusic = async (req, res) => {
     const schema = joi.object({
       title: joi.string().min(4).required(),
       year: joi.number().integer().min(4).required(),
+      artistId: joi.string().required(),
       thumbnail: joi.string().min(4),
       attache: joi.string().min(4),
-      artistId: joi.string().required(),
     });
 
     const { error } = schema.validate(body);
 
     if (error) {
-      return res.send({
+      return res.status(400).send({
         status: "Validate Failed",
         message: error.details[0].message,
-        data: body,
       });
     }
 
@@ -138,6 +137,23 @@ exports.addMusicWithFile = async (req, res) => {
     const data = req.body;
     const thumbnail = req.files.imageFile[0].filename;
 
+    const schema = joi.object({
+      title: joi.string().min(4).required(),
+      year: joi.number().integer().min(4).required(),
+      artistId: joi.string().required(),
+      imageFile: joi.string().min(4),
+      attache: joi.string().min(4),
+    });
+
+    const { error } = schema.validate(data);
+
+    if (error) {
+      return res.send({
+        status: "Validate Failed",
+        message: error.details[0].message,
+      });
+    }
+
     const dataUpload = {
       ...data,
       thumbnail,
@@ -145,9 +161,23 @@ exports.addMusicWithFile = async (req, res) => {
 
     const response = await Music.create(dataUpload); // add data
 
+    const findDatasHasOne = await Music.findAll({
+      attributes: {
+        exclude: ["createdAt", "updatedAt", "artistId"],
+      },
+      include: {
+        model: Artist,
+        as: "artist",
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "music.artiId"],
+        },
+      },
+    });
+
     res.send({
       status: "Response Success",
       message: "Upload data success",
+      viewDatasAfterAdd: findDatasHasOne,
     });
   } catch (error) {
     console.log(error);

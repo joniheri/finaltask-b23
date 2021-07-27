@@ -76,7 +76,7 @@ exports.UploadFiles = (imageFile, videoFile) => {
       if (err) {
         // jika size melebihi batas
         if (err.code === "LIMIT_FILE_SIZE") {
-          return restart.status(400).send({
+          return res.status(400).send({
             message: "Max file sized 100MB",
           });
         }

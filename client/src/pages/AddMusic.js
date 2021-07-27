@@ -15,25 +15,23 @@ export default function AddMusic() {
   const [data, setData] = useState({
     title: "",
     year: "",
-    imageFile: "",
+    thumbnail: "",
     attache: "",
     artistId: "",
   });
 
-  const { title, year, imageFile, attache, artistId } = data;
+  const { title, year, thumbnail, attache, artistId } = data;
 
   const handleInputChange = (e) => {
     setData({
       ...data,
       [e.target.name]:
-        e.target.name === "imageFile" ? e.target.files : e.target.value,
+        e.target.type === "file" ? e.target.files : e.target.value,
     });
 
-    if (e.target.name === "imageFile" && e.target.value !== "") {
+    if (e.target.name === "thumbnail") {
       let url = URL.createObjectURL(e.target.files[0]);
       setPreview(url);
-    } else {
-      setPreview("");
     }
   };
 
@@ -62,48 +60,36 @@ export default function AddMusic() {
         },
       };
 
-      // console.log(
-      //   "NameImageFile: ",
-      //   "img." + data.imageFile[0].name.split(".")[1]
-      // );
-
       const formData = new FormData();
       formData.set("title", data.title);
       formData.set("year", data.year);
       formData.set("attache", data.attache);
       formData.set("artistId", data.artistId);
-      formData.set(
-        "imageFile",
-        data.imageFile[0],
-        "img" + data.imageFile[0].name.split(".")[1]
-      );
+      formData.set("imageFile", data.thumbnail[0], data.thumbnail[0].name);
 
-      // setData({
-      //   ...data,
-      //   imageFile: data.imageFile[0].name,
-      // });
+      // console.log("setNewData", formData);
 
-      console.log("setNewData", data);
+      const response = await API.post("/addmusicwithfile", formData, config); //-->this is sintact to inset to database
 
-      // const response = await API.post("/addmusicwithfile", formData, config); //-->this is sintact to inset to database
+      console.log("DataSaved: ", response);
 
-      // console.log("DataSaved: ", response);
-
-      // if (response.data.status === "Response Failed") {
-      //   setMessageShowFailed(response.data.message);
-      // } else if (response.data.status === "Validate Failed") {
-      //   setMessageShowFailed(response.data.message);
-      // } else {
-      //   setData({
-      //     title: "",
-      //     year: "",
-      //     imageFile: "",
-      //     attache: "",
-      //     artistId: "",
-      //   });
-      //   setMessageShowFailed("");
-      //   setMessageNotif("Add Data Success!");
-      // }
+      if (response.data.status === "Validate Failed") {
+        setMessageShowFailed(response.data.message);
+        setMessageNotif("");
+      } else if (response.data.status === "Response Failed") {
+        setMessageShowFailed(response.data.message);
+        setMessageNotif("");
+      } else {
+        setData({
+          title: "",
+          year: "",
+          thumbnail: "",
+          attache: "",
+          artistId: "",
+        });
+        setMessageShowFailed("");
+        setMessageNotif("Add Data Success!");
+      }
     } catch (error) {
       console.log("ErrorTryCath", error);
     }
@@ -136,7 +122,7 @@ export default function AddMusic() {
           <Col sm={3}>
             <Form.Control
               onChange={handleInputChange}
-              name="imageFile"
+              name="thumbnail"
               type="file"
               title="Thumbnail"
               style={{
@@ -162,7 +148,6 @@ export default function AddMusic() {
         />
         <select
           onChange={handleInputChange}
-          value={data.artistId}
           name="artistId"
           style={{
             width: "100%",
