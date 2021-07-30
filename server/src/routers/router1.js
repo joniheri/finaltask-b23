@@ -5,13 +5,13 @@ const router = express.Router();
 // middleWareUploadFile
 const { UploadFiles, UploadFile2 } = require("../middleware/UploadFiles");
 
-// auth
-// const { checkAuth, authMiddle } = require("../controllers/Auth"); //--Router auth
+// Auth
+const { checkAuth, registerAuth, loginAuth } = require("../controllers/Auth"); //--Router auth
 
-// router.post("/check-auth", authMiddle, checkAuth);
-// end auth
+router.post("/registerauth", registerAuth);
+// EndAuth
 
-//tbUser
+//TbUser
 const {
   getUsers,
   addUser,
@@ -29,19 +29,20 @@ router.patch("/updateuser/:id", updateUser);
 router.delete("/deleteuser/:id", deleteUser);
 router.post("/registeruser/", register);
 router.post("/logindua", loginDua);
-// end tbUser
+// endtbUser
 
-//tbArtis
+//TbArtist
 const { getArtists, addArtist } = require("../controllers/TbArtis"); //--Router user
 
 router.get("/artists", getArtists);
 router.post("/addartis", addArtist);
-// end tbUser
+// EndTbArtist
 
 //tbMusic
 const {
   getMusics,
   getMusicHashOne,
+  getMusicsHasOneLimit,
   addMusic,
   addMusicWithFile,
   deleteMusic,
@@ -49,6 +50,7 @@ const {
 
 router.get("/musics", getMusics);
 router.get("/musicshasone", getMusicHashOne);
+router.get("/musicshasonelimit", getMusicsHasOneLimit);
 router.post("/addmusic", addMusic);
 router.post("/addmusicwithfile", UploadFiles("imageFile"), addMusicWithFile);
 router.post("/addmusic2", UploadFile2("imageFile"), addMusicWithFile);

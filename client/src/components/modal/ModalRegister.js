@@ -22,6 +22,7 @@ export default function ModalRegister({
     gender: "",
     phone: "",
     address: "",
+    level: "",
   });
 
   const { fullname, email, password, gender, phone, address } = form;
@@ -66,6 +67,7 @@ export default function ModalRegister({
           gender: "",
           phone: "",
           address: "",
+          level: "",
         });
         setRegisterShow(false);
         setMessageShowSuccess(true);

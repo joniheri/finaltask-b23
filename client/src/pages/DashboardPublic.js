@@ -26,7 +26,7 @@ export default function DashboardPublic({ stateLogin, setStateLogin }) {
   // loadDatasMusic
   const loadMusic = async () => {
     try {
-      const response = await API.get("/musicshasone");
+      const response = await API.get("/musicshasonelimit");
       setMusic(response.data.viewDatas);
     } catch (error) {
       console.log(error);

@@ -202,7 +202,6 @@ exports.deleteUser = async (req, res) => {
 exports.register = async (req, res) => {
   try {
     const data = req.body;
-    const { email, password } = req.body;
 
     console.log(data);
 
@@ -224,6 +223,8 @@ exports.register = async (req, res) => {
         data: data,
       });
     }
+
+    const { fullname, email, password, gender, phone, address } = data;
 
     // check "email user" is exist
     const findEmail = await User.findOne({
@@ -248,7 +249,7 @@ exports.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, hashStrenght);
     // end bcrypt password
 
-    // imput data to database
+    // input data to database
     const dataUser = await User.create({
       ...data,
       password: hashedPassword,
@@ -256,7 +257,6 @@ exports.register = async (req, res) => {
     //  end imput data to database
 
     // make token
-    // const secretKey = "jonheri";
     const secretKey = process.env.SECRET_KEY;
     const token = jwt.sign(
       {
@@ -269,18 +269,11 @@ exports.register = async (req, res) => {
     res.send({
       status: "Respons Success",
       message: "Register ok",
-      data: {
-        id: dataUser.id,
-        email: dataUser.email,
-        username: dataUser.username,
-        password: dataUser.password,
-        token: token,
-      },
     });
   } catch (error) {
     console.log(error);
     res.send({
-      status: "Respon failed",
+      status: "Respon Failed",
       message: "Register Failed!" + error,
     });
   }

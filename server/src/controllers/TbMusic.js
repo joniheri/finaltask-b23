@@ -69,6 +69,49 @@ exports.getMusicHashOne = async (req, res) => {
 };
 // EndGetDatas
 
+// GetDatasHasOneLimit
+exports.getMusicsHasOneLimit = async (req, res) => {
+  try {
+    const pathFile = process.env.PATCH_UPLOADS;
+
+    let findDatas = await Music.findAll({
+      attributes: {
+        exclude: ["createdAt", "updatedAt", "artistId"],
+      },
+      include: {
+        model: Artist,
+        as: "artist",
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "music.artiId"],
+        },
+      },
+      limit: 12,
+    });
+
+    const parseJSON = JSON.parse(JSON.stringify(findDatas));
+
+    findDatas = parseJSON.map((item) => {
+      return {
+        ...item,
+        thumbnail: pathFile + item.thumbnail,
+      };
+    });
+
+    res.send({
+      status: "Response success",
+      message: "Get Datas Successfully",
+      viewDatas: findDatas,
+    });
+  } catch (error) {
+    console.log(error);
+    res.send({
+      status: "Response failed",
+      message: "View Test data Failed!",
+    });
+  }
+};
+// EndGetDatasHasOneLimit
+
 // AddData
 exports.addMusic = async (req, res) => {
   try {

@@ -21,9 +21,10 @@ export default function ModalRegister({
     gender: "",
     phone: "",
     address: "",
+    level: "User",
   });
 
-  const { fullname, email, password, gender, phone, address } = form;
+  const { fullname, email, password, gender, phone, address, level } = form;
 
   const handleOnChange = (e) => {
     setForm({
@@ -32,7 +33,7 @@ export default function ModalRegister({
     });
   };
 
-  console.log(form);
+  // console.log(form);
 
   const handleOnSubmit = async (e) => {
     try {
@@ -48,7 +49,7 @@ export default function ModalRegister({
 
       // console.log("PrintBody: ", body);
 
-      const response = await API.post("/registeruser", body, config); //-->this is sintact to inset to database
+      const response = await API.post("/registerauth", body, config); //-->this is sintact to inset to database
 
       console.log("DataSaved: ", response);
 
@@ -65,7 +66,7 @@ export default function ModalRegister({
       // EndCheckEmail
 
       //CheckEmailOrConnection
-      else if (response.data.status === "Respon failed") {
+      else if (response.data.status === "Respon Failed") {
         setMessageShowFailed(response.data.message);
       }
       //EndCheckEmailOrPasswordNotMatch===========
@@ -200,6 +201,20 @@ export default function ModalRegister({
                 type="text"
                 placeholder="Address"
                 required
+                style={{
+                  margin: "0 0 15px 0",
+                  background: "#4b4b4b",
+                  color: "#fff",
+                }}
+              />
+            </Form.Group>
+            <Form.Group controlId="formFile" className="mb-3">
+              <Form.Control
+                onChange={handleOnChange}
+                name="level"
+                type="hidden"
+                placeholder="Level"
+                value="User"
                 style={{
                   margin: "0 0 15px 0",
                   background: "#4b4b4b",

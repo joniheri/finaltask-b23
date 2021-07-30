@@ -8,17 +8,6 @@ import { API } from "../config/Api";
 
 // import img
 // import Rectangle4 from "../img/Rectangle4.png";
-// import Rectangle5 from "../img/Rectangle5.png";
-// import Rectangle6 from "../img/Rectangle6.png";
-// import Rectangle7 from "../img/Rectangle7.png";
-// import Rectangle8 from "../img/Rectangle8.png";
-// import Rectangle9 from "../img/Rectangle9.png";
-// import Rectangle10 from "../img/Rectangle10.png";
-// import Rectangle11 from "../img/Rectangle11.png";
-// import Rectangle12 from "../img/Rectangle12.png";
-// import Rectangle13 from "../img/Rectangle13.png";
-// import Rectangle14 from "../img/Rectangle14.png";
-// import Rectangle15 from "../img/Rectangle15.png";
 
 export default function Dashboard() {
   const [music, setMusic] = useState([]);
